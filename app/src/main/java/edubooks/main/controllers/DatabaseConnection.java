@@ -13,7 +13,7 @@ public class DatabaseConnection {
     public static Connection getConnection() throws Exception {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://"+ HostName + ":"+ PortNumber+"/"+DatabaseNameDevelopment,UserName,Password);
+            return DriverManager.getConnection("jdbc:mysql://"+HostName+":"+PortNumber+"/"+DatabaseNameDevelopment,UserName,Password);
         }catch(Exception e){
             throw new Exception(e);
         }
