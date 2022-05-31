@@ -1,4 +1,4 @@
-package com.example.edubooks;
+package com.example.edubooks_itmda;
 
 import org.junit.Test;
 
