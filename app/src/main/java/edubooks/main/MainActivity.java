@@ -1,4 +1,4 @@
-package com.edubooks_eduvos_itmda;
+package edubooks.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 

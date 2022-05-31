@@ -1,4 +1,4 @@
-package com.edubooks_eduvos_itmda;
+package edubooks.main;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.edubooks_eduvos_itmda", appContext.getPackageName());
+        assertEquals("edubooks.main", appContext.getPackageName());
     }
 }
