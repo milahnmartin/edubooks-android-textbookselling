@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "edubooks-itmda"
+rootProject.name = "edubooks-eduvos-itmda"
 include ':app'
