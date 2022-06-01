@@ -37,6 +37,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         contentValues.put("Password",Password);
         contentValues.put("PhoneNumber",PhoneNumber);
         long result = DB.insert("Account",null,contentValues);
+//        INSERTS NEW DATA INTO DB, RETURNS -1 IF INSERT RETURNS A ERROR AND RETURNS 1 IF SUCCESS
         return result != -1;
     }
 
@@ -56,6 +57,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
     public Cursor getAccountInfo(int userID){
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("select * from Account where id = ?",new String[]{String.valueOf(userID)});
+//      RETURNS CURSOR OBJECT THAT IS A ITERABLE AND REQUIRES LOOP TO ITERATE THROUGH
         return cursor;
     }
 
@@ -66,13 +68,14 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
             int result = DB.delete("Account","Id = ?",new String[]{String.valueOf(userID)});
             return result != -1;
         }
-//        USER DOENST EXIST
+//      USER DOENST EXIST
         return false;
     }
 
     public Boolean validateUser(String EmailAddress,String Password){
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
+//        RETURNS -1 IF DOESNT EXIST AND 1 IF DOES EXIST HENCE -1 WILL RETURN FALSE
         return cursor.getCount() > 0;
     }
 }
