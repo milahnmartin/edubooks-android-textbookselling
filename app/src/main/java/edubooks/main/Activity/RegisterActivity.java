@@ -17,8 +17,9 @@ public class RegisterActivity extends AppCompatActivity {
         setTitle("EDUBOOKS - REGISTER");
     }
 
-    public void handleLogin(View v){
+    public void handleCreateUser(View v){
         DatabaseConnection EduDB = new DatabaseConnection(this);
-        Boolean userValid = EduDB.validateUser("userEmail","UserPassword");
+//        Boolean userValid = EduDB.insertAccountDetails();
     }
+
 }
