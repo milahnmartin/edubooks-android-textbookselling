@@ -69,4 +69,10 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 //        USER DOENST EXIST
         return false;
     }
+
+    public Boolean validateUser(String EmailAddress,String Password){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
+        return cursor.getCount() > 0;
+    }
 }
