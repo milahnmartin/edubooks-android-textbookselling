@@ -25,22 +25,21 @@
         android:id="@+id/Logo"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo"
-        android:layout_margin="10dp"
-        />
+        android:layout_margin="10dp" />
 
     <EditText
-        android:id="@+id/Username"
+        android:id="@+id/Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Logo"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="#30FFFFFF"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
         android:drawablePadding="20dp"
-        android:hint="Username"
+        android:hint="Email Address"
         android:padding="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -49,7 +48,7 @@
         android:id="@+id/Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Username"
+        android:layout_below="@id/Email"
         android:background="#30FFFFFF"
         android:hint="Password"
         android:textColor="@color/white"
@@ -73,9 +72,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ForgotPassword"
+        android:id="@+id/SignUp"
         android:layout_below="@id/LoginBtn"
-        android:text="Forgot Password?"
+        android:text="Don't Have an Account?"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp" />

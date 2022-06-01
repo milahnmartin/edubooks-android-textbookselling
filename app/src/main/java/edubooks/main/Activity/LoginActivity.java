@@ -2,9 +2,16 @@ package edubooks.main.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Objects;
 
 import edubooks.main.R;
 import edubooks.main.controllers.DatabaseConnection;
@@ -16,11 +23,31 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView UsernameStr = findViewById(R.id.Username);
-        TextView PasswordStr = findViewById(R.id.Password);
-    }
-    public void handleLogin(View v){
-        DatabaseConnection EduDB = new DatabaseConnection(this);
-        Boolean userValid = EduDB.validateUser("userEmail","UserPassword");
+        //Hides the action bar
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
+        TextView EmailTextView = findViewById(R.id.Email);
+        TextView PasswordTextView = findViewById(R.id.Password);
+
+        MaterialButton LoginBtn = (MaterialButton) findViewById(R.id.LoginBtn);
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (
+                        EmailTextView.getText().toString().equals("") ||
+                        PasswordTextView.getText().toString().equals("")
+                ) {
+                    Snackbar.make(v, "One or more fields are empty", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(LoginActivity.this);
+
+                    if (DatabaseConnectionObj.validateUser(EmailTextView.getText().toString(),PasswordTextView.getText().toString())) {
+                        Snackbar.make(v, "Success", Snackbar.LENGTH_SHORT).show();
+                    } else {
+                        Snackbar.make(v, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 }
