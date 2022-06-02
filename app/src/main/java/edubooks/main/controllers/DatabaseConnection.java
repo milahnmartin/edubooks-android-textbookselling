@@ -48,7 +48,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         contentValues.put("FirstName",FirstName);
         contentValues.put("LastName",LastName);
         contentValues.put("LastName",LastName);
-        contentValues.put("E    mailAddress",EmailAddress);
+        contentValues.put("EmailAddress",EmailAddress);
         contentValues.put("Password",Password);
         contentValues.put("PhoneNumber",PhoneNumber);
         int result = DB.update("Account",contentValues,"Id=?",new String[]{String.valueOf(userId)});
@@ -79,11 +79,15 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return false;
     }
 
-    public Boolean validateUser(String EmailAddress,String Password){
+    public int validateUser(String EmailAddress,String Password){
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
 //        RETURNS -1 IF DOESNT EXIST AND 1 IF DOES EXIST HENCE -1 WILL RETURN FALSE
-        return cursor.getCount() > 0;
+        if(cursor.getCount() > 0){
+            Cursor iDCursor = DB.rawQuery("SELECT Id FROM Account WHERE EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
+            return iDCursor.getInt(0);
+        }
+        return -1;
     }
 
     public StringBuffer getAllListedBooks(){
