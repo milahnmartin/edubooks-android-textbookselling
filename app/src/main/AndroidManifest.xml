@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--FYI need to change the file you want to run
+to the file inside the activity and intent-filter tags
+example below is the file that will get run in android:name
+<activity
+    android:name=".Activity.LoginActivity"
+    android:exported="true">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="edubooks.main">
@@ -20,10 +32,10 @@
             android:name=".Activity.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.RegisterActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
