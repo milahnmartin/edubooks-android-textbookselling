@@ -85,4 +85,34 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 //        RETURNS -1 IF DOESNT EXIST AND 1 IF DOES EXIST HENCE -1 WILL RETURN FALSE
         return cursor.getCount() > 0;
     }
+
+    public StringBuffer getAllListedBooks(){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook",null);
+        StringBuffer ListedBooksAll = new StringBuffer();
+        while(cursor.moveToNext()){
+            ListedBooksAll.append(cursor.getString(0)).append("\n");
+            ListedBooksAll.append(cursor.getString(1)).append("\n");
+            ListedBooksAll.append(cursor.getString(2)).append("\n");
+            ListedBooksAll.append(cursor.getString(3)).append("\n");
+            ListedBooksAll.append(cursor.getString(4)).append("\n");
+            ListedBooksAll.append(cursor.getString(5)).append("\n");
+            ListedBooksAll.append(cursor.getString(6)).append("\n");
+            ListedBooksAll.append(cursor.getString(7)).append("\n");
+            ListedBooksAll.append(cursor.getString(8)).append("\n");
+            ListedBooksAll.append(cursor.getString(9)).append("\n");
+        }
+        return ListedBooksAll;
+    }
+
+    public Boolean doesBookIdExist(int id){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook WHERE id = ?",new String[]{String.valueOf(id)});
+        return cursor.getCount() > 0;
+    }
+
+    public Cursor getListofBooksViaIsbN(int isbnNumber){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        return DB.rawQuery("SELECT * FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+    }
 }
