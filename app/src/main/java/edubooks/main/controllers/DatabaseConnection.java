@@ -37,6 +37,10 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         contentValues.put("EmailAddress",EmailAddress);
         contentValues.put("Password",Password);
         contentValues.put("PhoneNumber",PhoneNumber);
+        Cursor doesUserEmailExistResultCursor = DB.rawQuery("SELECT EmailAddress FROM Account WHERE EmailAddress = ?",new String[]{EmailAddress});
+        if(doesUserEmailExistResultCursor.getCount() > 0){
+            return false;
+        }
         long result = DB.insert("Account",null,contentValues);
 //        INSERTS NEW DATA INTO DB, RETURNS -1 IF INSERT RETURNS A ERROR AND RETURNS 1 IF SUCCESS
         return result != -1;
