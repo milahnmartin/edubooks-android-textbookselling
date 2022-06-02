@@ -26,6 +26,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists Account");
         db.execSQL("drop table if exists ListedBook");
+        this.onCreate(db);
     }
 
     public Boolean insertAccountDetails(String FirstName,String LastName,String EmailAddress,String Password,String PhoneNumber){
@@ -47,7 +48,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         contentValues.put("FirstName",FirstName);
         contentValues.put("LastName",LastName);
         contentValues.put("LastName",LastName);
-        contentValues.put("EmailAddress",EmailAddress);
+        contentValues.put("E    mailAddress",EmailAddress);
         contentValues.put("Password",Password);
         contentValues.put("PhoneNumber",PhoneNumber);
         int result = DB.update("Account",contentValues,"Id=?",new String[]{String.valueOf(userId)});
@@ -58,6 +59,12 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("select * from Account where id = ?",new String[]{String.valueOf(userID)});
 //      RETURNS CURSOR OBJECT THAT IS A ITERABLE AND REQUIRES LOOP TO ITERATE THROUGH
+        return cursor;
+    }
+
+    public Cursor getAllAccountInfo(){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("select * from Account",null);
         return cursor;
     }
 

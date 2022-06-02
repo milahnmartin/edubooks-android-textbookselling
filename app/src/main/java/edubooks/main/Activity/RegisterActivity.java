@@ -3,6 +3,7 @@ package edubooks.main.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -59,11 +60,13 @@ public class RegisterActivity extends AppCompatActivity {
                                         FirstNameTextView.getText().toString(),
                                         LastNameTextView.getText().toString(),
                                         EmailTextView.getText().toString(),
-                                        CellphoneTextView.getText().toString(),
-                                        PasswordTextView.getText().toString()
+                                        PasswordTextView.getText().toString(),
+                                        CellphoneTextView.getText().toString()
                                 )
                         ) {
                             Snackbar.make(v, "Account Successfully created", Snackbar.LENGTH_SHORT).show();
+                            Intent I = new Intent(RegisterActivity.this,LoginActivity.class);
+                            startActivity(I);
                         } else {
                             Snackbar.make(v, "Something went wrong while creating user.", Snackbar.LENGTH_SHORT).show();
                         }
