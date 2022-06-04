@@ -32,10 +32,10 @@ example below is the file that will get run in android:name
             android:name=".Activity.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.RegisterActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
