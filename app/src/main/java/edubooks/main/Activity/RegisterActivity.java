@@ -13,6 +13,9 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Objects;
 
 import edubooks.main.R;
@@ -56,20 +59,26 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         // TODO Hash the Password
                         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(RegisterActivity.this);
-                        if (
-                                DatabaseConnectionObj.insertAccountDetails(
-                                        FirstNameTextView.getText().toString(),
-                                        LastNameTextView.getText().toString(),
-                                        EmailTextView.getText().toString(),
-                                        PasswordTextView.getText().toString(),
-                                        CellphoneTextView.getText().toString()
-                                )
-                        ) {
-                            Snackbar.make(v, "Account Successfully created", Snackbar.LENGTH_SHORT).show();
-                            Intent I = new Intent(RegisterActivity.this,LoginActivity.class);
-                            startActivity(I);
-                        } else {
-                            Snackbar.make(v, "Something went wrong while creating user.", Snackbar.LENGTH_SHORT).show();
+                        try {
+                            JSONObject InsertUserJsonObj =  DatabaseConnectionObj.insertAccountDetails(
+                                    FirstNameTextView.getText().toString(),
+                                    LastNameTextView.getText().toString(),
+                                    EmailTextView.getText().toString(),
+                                    PasswordTextView.getText().toString(),
+                                    CellphoneTextView.getText().toString()
+                            );
+                            String MessageStr = (String) InsertUserJsonObj.get("Message");
+                            if ((Boolean) InsertUserJsonObj.get("Result")) {
+                                // If Result from Json is true then user has been created
+                                // and the user is redirected
+                                Intent I = new Intent(RegisterActivity.this,LoginActivity.class);
+                                startActivity(I);
+                            } else {
+                                // display the error message
+                                Snackbar.make(v, MessageStr, Snackbar.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            Log.d("Register User Error", String.valueOf(e));
                         }
                     }
                 }
