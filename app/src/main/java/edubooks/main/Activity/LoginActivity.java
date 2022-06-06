@@ -2,6 +2,7 @@ package edubooks.main.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,12 +42,23 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(LoginActivity.this);
 
-                    if (DatabaseConnectionObj.validateUser(EmailTextView.getText().toString(),PasswordTextView.getText().toString())) {
+                    if (DatabaseConnectionObj.validateUser(EmailTextView.getText().toString(),PasswordTextView.getText().toString()) > -1) {
                         Snackbar.make(v, "Success", Snackbar.LENGTH_SHORT).show();
                     } else {
                         Snackbar.make(v, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        // Redirects to Signup once the "Don't Have an Account?" Text is clicked
+        TextView SignUpRedirect = (TextView) findViewById(R.id.SignUp);
+        SignUpRedirect.setOnClickListener (new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v1) {
+                Intent RedirectSignUp = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(RedirectSignUp);
             }
         });
     }

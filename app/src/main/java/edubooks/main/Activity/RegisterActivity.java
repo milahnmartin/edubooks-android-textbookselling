@@ -5,6 +5,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,6 +73,16 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+        // Redirects to login once the "Have an Account?" Text is clicked
+        TextView LoginRedirect = (TextView) findViewById(R.id.LoginText);
+        LoginRedirect.setOnClickListener (new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v1) {
+                Intent RedirectLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(RedirectLogin);
             }
         });
     }
