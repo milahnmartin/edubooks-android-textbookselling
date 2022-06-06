@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public DatabaseConnection(Context context) {
@@ -29,21 +32,31 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         this.onCreate(db);
     }
 
-    public Boolean insertAccountDetails(String FirstName,String LastName,String EmailAddress,String Password,String PhoneNumber){
+    public JSONObject insertAccountDetails(String FirstName, String LastName, String EmailAddress, String Password, String PhoneNumber) throws JSONException {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        // Going to user the JSONObject to provide a result and feedback
+        JSONObject JsonObj = new JSONObject();
         contentValues.put("FirstName",FirstName);
         contentValues.put("LastName",LastName);
         contentValues.put("EmailAddress",EmailAddress);
         contentValues.put("Password",Password);
         contentValues.put("PhoneNumber",PhoneNumber);
         Cursor doesUserEmailExistResultCursor = DB.rawQuery("SELECT EmailAddress FROM Account WHERE EmailAddress = ?",new String[]{EmailAddress});
-        if(doesUserEmailExistResultCursor.getCount() > 0){
-            return false;
+        if (doesUserEmailExistResultCursor.getCount() > 0) {
+            JsonObj.put("Result", Boolean.valueOf(false));
+            JsonObj.put("Message", "This Email Address Already Exists");
+            return JsonObj;
         }
         long result = DB.insert("Account",null,contentValues);
-//        INSERTS NEW DATA INTO DB, RETURNS -1 IF INSERT RETURNS A ERROR AND RETURNS 1 IF SUCCESS
-        return result != -1;
+        if (result != -1) {
+            JsonObj.put("Result", Boolean.valueOf(true));
+            return JsonObj;
+        } else {
+            JsonObj.put("Result", Boolean.valueOf(false));
+            JsonObj.put("Message", "Something went wrong while creating user");
+            return JsonObj;
+        }
     }
 
     public Boolean updateAccountDetails(String FirstName,String LastName,String EmailAddress,String Password,String PhoneNumber,int userId){
