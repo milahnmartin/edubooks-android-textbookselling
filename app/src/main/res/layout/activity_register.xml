@@ -128,7 +128,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ForgotPassword"
+        android:id="@+id/LoginText"
         android:layout_below="@id/SignUpBtn"
         android:text="Already have an Account?"
         android:textColor="@color/white"
