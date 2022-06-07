@@ -93,7 +93,6 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         }
         return -1;
     }
-
     public StringBuffer getAllListedBooks(){
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook",null);
