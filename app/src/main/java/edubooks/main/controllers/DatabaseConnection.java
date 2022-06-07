@@ -97,9 +97,10 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public int validateUser(String EmailAddress,String Password){
         SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
+        Cursor cursor = DB.rawQuery("SELECT Id FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
 //        RETURNS -1 IF DOESNT EXIST AND 1 IF DOES EXIST HENCE -1 WILL RETURN FALSE
         if(cursor.getCount() > 0){
+            cursor.moveToFirst();
             return cursor.getInt(0);
         }
         return -1;
