@@ -52,11 +52,10 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         if (result != -1) {
             JsonObj.put("Result", Boolean.valueOf(true));
             return JsonObj;
-        } else {
-            JsonObj.put("Result", Boolean.valueOf(false));
-            JsonObj.put("Message", "Something went wrong while creating user");
-            return JsonObj;
         }
+        JsonObj.put("Result", Boolean.valueOf(false));
+        JsonObj.put("Message", "Something went wrong while creating user");
+        return JsonObj;
     }
 
     public Boolean updateAccountDetails(String FirstName,String LastName,String EmailAddress,String Password,String PhoneNumber,int userId){
