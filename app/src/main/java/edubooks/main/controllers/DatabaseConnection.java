@@ -101,8 +101,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         Cursor cursor = DB.rawQuery("SELECT * FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
 //        RETURNS -1 IF DOESNT EXIST AND 1 IF DOES EXIST HENCE -1 WILL RETURN FALSE
         if(cursor.getCount() > 0){
-            Cursor iDCursor = DB.rawQuery("SELECT Id FROM Account WHERE EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
-            return iDCursor.getInt(0);
+            return cursor.getInt(0);
         }
         return -1;
     }
