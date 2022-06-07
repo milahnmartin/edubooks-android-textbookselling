@@ -67,14 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
                                     PasswordTextView.getText().toString(),
                                     CellphoneTextView.getText().toString()
                             );
-                            String MessageStr = (String) InsertUserJsonObj.get("Message");
                             if ((Boolean) InsertUserJsonObj.get("Result")) {
                                 // If Result from Json is true then user has been created
                                 // and the user is redirected
-                                Intent I = new Intent(RegisterActivity.this,LoginActivity.class);
-                                startActivity(I);
+                                Intent redirectLoginActivity = new Intent(RegisterActivity.this,LoginActivity.class);
+                                startActivity(redirectLoginActivity);
                             } else {
                                 // display the error message
+                                String MessageStr = (String) InsertUserJsonObj.get("Message");
                                 Snackbar.make(v, MessageStr, Snackbar.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
