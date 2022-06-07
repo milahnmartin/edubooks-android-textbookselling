@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (validateAndRetrieveId != -1) {
                         Snackbar.make(v, "Success", Snackbar.LENGTH_SHORT).show();
                         Intent listingIntent = new Intent(LoginActivity.this,ListingActivity.class);
-                        listingIntent.putExtra("user_id",String.valueOf(validateAndRetrieveId));
+                        listingIntent.putExtra("user_id",validateAndRetrieveId);
                         startActivity(listingIntent);
                     } else {
                         Snackbar.make(v, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
