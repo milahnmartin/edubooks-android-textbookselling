@@ -52,11 +52,10 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         if (result != -1) {
             JsonObj.put("Result", Boolean.valueOf(true));
             return JsonObj;
-        } else {
-            JsonObj.put("Result", Boolean.valueOf(false));
-            JsonObj.put("Message", "Something went wrong while creating user");
-            return JsonObj;
         }
+        JsonObj.put("Result", Boolean.valueOf(false));
+        JsonObj.put("Message", "Something went wrong while creating user");
+        return JsonObj;
     }
 
     public Boolean updateAccountDetails(String FirstName,String LastName,String EmailAddress,String Password,String PhoneNumber,int userId){
@@ -98,11 +97,11 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public int validateUser(String EmailAddress,String Password){
         SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
+        Cursor cursor = DB.rawQuery("SELECT Id FROM Account where EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
 //        RETURNS -1 IF DOESNT EXIST AND 1 IF DOES EXIST HENCE -1 WILL RETURN FALSE
         if(cursor.getCount() > 0){
-            Cursor iDCursor = DB.rawQuery("SELECT Id FROM Account WHERE EmailAddress = ? AND Password = ?",new String[]{EmailAddress,Password});
-            return iDCursor.getInt(0);
+            cursor.moveToFirst();
+            return cursor.getInt(0);
         }
         return -1;
     }
