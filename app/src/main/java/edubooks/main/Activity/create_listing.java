@@ -81,7 +81,7 @@ public class create_listing extends AppCompatActivity {
                         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(create_listing.this);
     //insertNewBook(String Title*, String Author*, String Category*, String faculty*, String Quality* ,int IsbnNumber*, boolean isAvailible*,float bookPrice*,int accountId*)
                         try {
-                            JSONObject InsertUserJsonObj =  DatabaseConnectionObj.insertNewBook(
+                            JSONObject InserBookJsonObj =  DatabaseConnectionObj.insertNewBook(
                                     BookTitleTextView.getText().toString(),
                                     AuthorNameTextView.getText().toString(),
                                     BookCategory.getText().toString(),
@@ -92,7 +92,7 @@ public class create_listing extends AppCompatActivity {
                                     Float.parseFloat(SellingPriceTextView.getText().toString()),
                                     1
                             );
-                            if ((Boolean) InsertUserJsonObj.get("Result")) {
+                            if ((Boolean) InserBookJsonObj.get("Result")) {
                                 // If Result from Json is true then user has been created
                                 // and the user is redirected
                                 Snackbar.make(view, "Book Listed!", Snackbar.LENGTH_SHORT).show();
@@ -100,7 +100,7 @@ public class create_listing extends AppCompatActivity {
                                 //startActivity(redirectLoginActivity);
                             } else {
                                 // display the error message
-                                String MessageStr = (String) InsertUserJsonObj.get("Message");
+                                String MessageStr = (String) InserBookJsonObj.get("Message");
                                 Snackbar.make(view, MessageStr, Snackbar.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
