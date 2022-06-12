@@ -12,7 +12,6 @@
         android:background="@drawable/background1"
         tools:context=".Activity.RegisterActivity">
 
-
         <ImageButton
             android:id="@+id/BackButton"
             android:layout_width="80dp"
@@ -24,9 +23,9 @@
 
         <TextView
             android:id="@+id/Title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
@@ -50,10 +49,10 @@
 
         <ImageButton
             android:id="@+id/AddBook"
-            android:layout_width="140dp"
-            android:layout_height="170dp"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@null"
@@ -65,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="210dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:text="UPLOAD A IMAGE OF THE BOOK"
@@ -78,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="235dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:height="30dp"
@@ -95,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="315dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="#FFE4D6"
@@ -111,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="390dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="#FFE4D6"
@@ -123,11 +122,44 @@
             android:textColorHint="@color/orange" />
 
         <EditText
+            android:id="@+id/Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="470dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter book category"
+            android:inputType="number"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+        <EditText
+            android:id="@+id/Faculty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter book faculty"
+            android:inputType="number"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+
+        <EditText
             android:id="@+id/SellingPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="600dp"
+            android:layout_marginTop="630dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="#FFE4D6"
@@ -144,7 +176,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="700dp"
+            android:layout_marginTop="710dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="#FFE4D6"

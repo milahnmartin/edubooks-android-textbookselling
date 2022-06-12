@@ -19,6 +19,13 @@ import org.w3c.dom.Text;
 import java.util.Objects;
 
 import edubooks.main.R;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class create_listing extends AppCompatActivity {
 
@@ -31,8 +38,14 @@ public class create_listing extends AppCompatActivity {
         TextView BookTitleTextView = findViewById(R.id.BookTitle);
         TextView AuthorNameTextView = findViewById(R.id.AuthorName);
         TextView ISBDTextView = findViewById(R.id.ISBNnr);
+        TextView BookCategory = findViewById(R.id.Category);
+        TextView BookFaculty = findViewById(R.id.Faculty);
         TextView SellingPriceTextView = findViewById(R.id.SellingPrice);
         TextView BookConditionTextView = findViewById(R.id.BookCondition);
+        //Spinner spinnercat=findViewById(R.id.BookCategory);
+        //ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.BookCategories, android.R.layout.simple_spinner_item);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        //spinnercat.setAdapter(adapter);
 
         Button AddList = (Button) findViewById(R.id.SubmitBook);
         AddList.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +56,8 @@ public class create_listing extends AppCompatActivity {
                         BookTitleTextView.getText().toString().equals("") ||
                         AuthorNameTextView.getText().toString().equals("") ||
                         ISBDTextView.getText().toString().equals("") ||
+                        BookCategory.getText().toString().equals("") ||
+                        BookFaculty.getText().toString().equals("") ||
                         SellingPriceTextView.getText().toString().equals("") ||
                         BookConditionTextView.getText().toString().equals("")
                 ) {
