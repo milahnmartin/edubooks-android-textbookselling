@@ -31,7 +31,7 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="EDUBOOKS"
-            android:textColor="@color/white"
+            android:textColor="@color/Off_white"
             android:textSize="35dp"
             android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:text="UPLOAD A IMAGE OF THE BOOK"
-            android:textColor="@color/white"
+            android:textColor="@color/Off_white"
             android:textSize="15dp"
             android:textStyle="bold" />
 
@@ -197,7 +197,7 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/orange"
             android:text="List Book"
-            android:textColor="@color/white" />
+            android:textColor="@color/Off_white" />
 
     </RelativeLayout>
 </ScrollView>

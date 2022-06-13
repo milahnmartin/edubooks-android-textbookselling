@@ -12,18 +12,28 @@
         android:background="@drawable/background1"
         tools:context=".Activity.RegisterActivity">
 
+        <ImageButton
+            android:id="@+id/BackButton"
+            android:layout_width="57dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_toLeftOf="@id/SignIn"
+            android:background="@null"
+            android:src="@drawable/img_2" />
+
         <TextView
             android:id="@+id/SignIn"
             android:layout_width="200dp"
             android:layout_height="57dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true"
+            android:textAlignment="center"
             android:gravity="center"
             android:text="EDUBOOKS"
-            android:textColor="@color/white"
+            android:textColor="@color/Off_white"
             android:textSize="35dp"
             android:textStyle="bold"/>
 
@@ -32,10 +42,9 @@
             android:layout_width="57dp"
             android:layout_height="57dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/SignIn"
             android:src="@drawable/logo"/>
 
@@ -53,6 +62,7 @@
             android:text="Profile Information"
             android:textSize="25dp"
             android:textAlignment="center"
+            android:gravity="center"
             android:textColor="@color/Brown"
             android:textColorHint="@color/Brown"
             android:textStyle="bold"/>
@@ -69,9 +79,10 @@
             android:drawablePadding="20dp"
             android:padding="10dp"
             android:text="Name: "
+            android:textSize="14dp"
             android:textColor="@color/Brown"
             android:textColorHint="@color/Brown"
-            android:textSize="14dp"
+
             android:textStyle="bold"/>
 
         <EditText
@@ -120,7 +131,7 @@
             android:textColor="@color/Brown"
             android:textColorHint="@color/Brown"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/EditInformation"
@@ -128,6 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/PhoneNumber"
             android:text="Edit Information"
+            android:textColor="@color/Off_white"
             android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
@@ -139,6 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/EditInformation"
             android:text="Change Password"
+            android:textColor="@color/Off_white"
             android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
@@ -150,6 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ChangePassword"
             android:text="My Listings"
+            android:textColor="@color/Off_white"
             android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
