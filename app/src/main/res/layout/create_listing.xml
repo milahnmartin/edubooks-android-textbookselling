@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background1"
+        tools:context=".Activity.RegisterActivity">
+
+        <ImageButton
+            android:id="@+id/BackButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
+            android:background="@null"
+            app:srcCompat="@drawable/img_2" />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="EDUBOOKS"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/EduLogo"
+            android:layout_width="133dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="@id/Title"
+            app:layout_constraintTop_toTopOf="@id/AddBook"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageButton
+            android:id="@+id/AddBook"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/img_1" />
+
+        <TextView
+            android:id="@+id/UploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="210dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="UPLOAD A IMAGE OF THE BOOK"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/BookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="235dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:height="30dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter a book title"
+            android:inputType="textPersonName"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+        <EditText
+            android:id="@+id/AuthorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="315dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter author name"
+            android:inputType="textPersonName"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+        <EditText
+            android:id="@+id/ISBNnr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="390dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter ISBN code"
+            android:inputType="number"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+        <EditText
+            android:id="@+id/Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="470dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter book category"
+            android:inputType="text"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+        <EditText
+            android:id="@+id/Faculty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter book faculty"
+            android:inputType="text"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+
+        <EditText
+            android:id="@+id/SellingPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="630dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter selling price"
+            android:inputType="numberDecimal"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange"
+            app:layout_constraintBottom_toTopOf="@+id/BookCondition" />
+
+        <EditText
+            android:id="@+id/BookCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="710dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:ems="10"
+            android:hint="Enter book condition"
+            android:inputType="textPersonName"
+            android:padding="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/orange" />
+
+        <Button
+            android:id="@+id/SubmitBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="800dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/orange"
+            android:text="List Book"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</ScrollView>
