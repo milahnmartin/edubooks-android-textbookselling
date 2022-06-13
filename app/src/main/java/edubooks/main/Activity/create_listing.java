@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
@@ -113,13 +114,12 @@ public class create_listing extends AppCompatActivity {
             }
         });
         //early redictect to listing page
-        ImageButton BackHome = (ImageButton) findViewById(R.id.BackButton);
+        ImageView BackHome = (ImageView) findViewById(R.id.BackButton);
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
-                //Intent RedirectLogin = new Intent(create_listing.this, LoginActivity.class);
-                //startActivity(RedirectLogin);
-                Snackbar.make(v1, "Redirecting You Back Home!", Snackbar.LENGTH_SHORT).show();
+                Intent RedirectLogin = new Intent(create_listing.this, ListingActivity.class);
+                startActivity(RedirectLogin);
             }
         });
         //react to click of +
