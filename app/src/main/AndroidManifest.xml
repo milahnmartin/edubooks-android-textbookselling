@@ -25,6 +25,8 @@ example below is the file that will get run in android:name
         android:supportsRtl="true"
         android:theme="@style/Theme.Edubookitmda"
         tools:targetApi="31">
+        <activity android:name=".Activity.create_listing"
+            android:exported="false"/>
         <activity
             android:name=".Activity.ListingActivity"
             android:exported="false" />
