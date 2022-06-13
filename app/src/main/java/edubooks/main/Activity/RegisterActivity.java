@@ -1,9 +1,11 @@
 package edubooks.main.Activity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         MaterialButton SignUpBtn = (MaterialButton) findViewById(R.id.SignUpBtn);
         SignUpBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 // Checks if all fields have been filled in
@@ -59,22 +62,26 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         // TODO Hash the Password
                         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(RegisterActivity.this);
+                        PasswordCreation PasswordCreationObj = new PasswordCreation(RegisterActivity.this);
+
+                        String EncryptedPasswordStr = PasswordCreation.encryptPassword(PasswordTextView.getText().toString());
+
                         try {
                             JSONObject InsertUserJsonObj =  DatabaseConnectionObj.insertAccountDetails(
                                     FirstNameTextView.getText().toString(),
                                     LastNameTextView.getText().toString(),
                                     EmailTextView.getText().toString(),
-                                    PasswordTextView.getText().toString(),
+                                    EncryptedPasswordStr,
                                     CellphoneTextView.getText().toString()
                             );
-                            String MessageStr = (String) InsertUserJsonObj.get("Message");
                             if ((Boolean) InsertUserJsonObj.get("Result")) {
                                 // If Result from Json is true then user has been created
                                 // and the user is redirected
-                                Intent I = new Intent(RegisterActivity.this,LoginActivity.class);
-                                startActivity(I);
+                                Intent redirectLoginActivity = new Intent(RegisterActivity.this,LoginActivity.class);
+                                startActivity(redirectLoginActivity);
                             } else {
                                 // display the error message
+                                String MessageStr = (String) InsertUserJsonObj.get("Message");
                                 Snackbar.make(v, MessageStr, Snackbar.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
