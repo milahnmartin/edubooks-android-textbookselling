@@ -45,15 +45,15 @@
 
         <ImageButton
             android:id="@+id/AddBook"
-            android:layout_below="@+id/Title"
             android:layout_width="100dp"
             android:layout_height="150dp"
+            android:layout_below="@+id/Title"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="130dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@null"
-            android:layout_centerHorizontal="true"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/img_1" />
 
@@ -200,7 +200,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="@color/Dark_Blue"
             android:text="List Book"
             android:textColor="@color/white" />
 

@@ -20,5 +20,7 @@ public class ListingActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+
+
     }
 }
