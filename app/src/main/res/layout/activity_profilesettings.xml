@@ -16,16 +16,16 @@
             android:id="@+id/SignIn"
             android:layout_width="200dp"
             android:layout_height="57dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="EDUBOOKS"
             android:textColor="@color/white"
             android:textSize="35dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/Logo"
@@ -37,7 +37,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/SignIn"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo" />
 
         <EditText
             android:id="@+id/ProfileInformation"
@@ -127,11 +127,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/PhoneNumber"
-            android:text="Edit Information"
-            android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="100dp"/>
+            android:backgroundTint="@color/Dark_Orange"
+            android:text="Edit Information" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ChangePassword"
