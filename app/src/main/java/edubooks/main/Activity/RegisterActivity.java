@@ -60,8 +60,8 @@ public class RegisterActivity extends AppCompatActivity {
                     } else if (!isValidPassword(PasswordTextView.getText().toString())) {
                         Snackbar.make(v, "Invalid Password", Snackbar.LENGTH_SHORT).show();
                     } else {
-                        // TODO Hash the Password
                         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(RegisterActivity.this);
+//                       The instance below is never used @TODO discuss if we can remove it
                         PasswordCreation PasswordCreationObj = new PasswordCreation(RegisterActivity.this);
 
                         String EncryptedPasswordStr = PasswordCreation.encryptPassword(PasswordTextView.getText().toString());
