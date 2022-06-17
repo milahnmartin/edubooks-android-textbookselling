@@ -124,6 +124,25 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         }
         return ListedBooksAll;
     }
+    public StringBuffer listingpagedetails(){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
+        StringBuffer ListedBooksAll = new StringBuffer();
+        while(cursor.moveToNext()){
+            ListedBooksAll.append(cursor.getString(0)).append("\n");
+            ListedBooksAll.append(cursor.getString(1)).append("\n");
+            ListedBooksAll.append(cursor.getString(2)).append("\n");
+            ListedBooksAll.append(cursor.getString(3)).append("\n");
+        }
+        return ListedBooksAll;
+    }
+    public Cursor listingpagedetailsraw(){
+        //SQLiteDatabase DB = this.getReadableDatabase();
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
+        return cursor;
+    }
+
 
     public Boolean doesBookIdExist(int id){
         SQLiteDatabase DB = this.getReadableDatabase();
@@ -133,7 +152,23 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getListofBooksViaIsbN(int isbnNumber){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT * FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+    }
+
+    //listing page check if clicked item is in db to confirm and then take over to page specific
+    public int getBookName(String BookName){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook WHERE Title = ?",new String[]{String.valueOf(BookName)});
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            return cursor.getInt(0);
+        }
+        return -1;
+    }
+
+    public Cursor getallBooks(){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        return DB.rawQuery("SELECT * FROM ListedBook",new String[]{});
     }
 
     public JSONObject insertNewBook(String Title, String Author, String Category, String faculty, String Quality ,int IsbnNumber, boolean isAvailible,float bookPrice,int accountId) throws JSONException {

@@ -1,10 +1,31 @@
 package edubooks.main.Activity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import edubooks.main.R;
+import edubooks.main.controllers.DatabaseConnection;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.os.Bundle;
+//import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import java.util.Objects;
 
@@ -20,7 +41,64 @@ public class ListingActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        ImageView BackHome = (ImageView) findViewById(R.id.BackButton);
+        BackHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v1) {
+                //Snackbar.make(v1, ListedBooks.toString(), Snackbar.LENGTH_SHORT).show();
+                Intent RedirectMenu = new Intent(ListingActivity.this, MenuActivity.class);
+                RedirectMenu.putExtra("user_id",userId);
+                startActivity(RedirectMenu);
+            }
+        });
+        DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(ListingActivity.this);
+        //StringBuffer ListedBooks =DatabaseConnectionObj.listingpagedetails();
+        final ListView list = findViewById(R.id.list);
+        ArrayList<String> arrayList = new ArrayList<>();
+        Cursor cursor =DatabaseConnectionObj.listingpagedetailsraw();
+        //StringBuffer ListedBooksAll = new StringBuffer();
+        if(cursor.getCount() > 0){
+            while(cursor.moveToNext()){
+                String BookN = cursor.getString(0);
+                String Author = cursor.getString(1);
+                String ISBN = cursor.getString(2);
+                String Price = cursor.getString(3);
+                String listitem = "Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
+                arrayList.add(listitem);
+            }
+        }
+        else{
+            arrayList.add("Database has no records.");
+        }
 
-
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        list.setAdapter(arrayAdapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String clickedItem=(String) list.getItemAtPosition(position);
+                int validateAndRetrieveId = -1;
+                if(clickedItem != "Database has no records.") {
+                    String New_list = clickedItem.toString().replaceAll(":", ",");
+                    String Spaceless = New_list.toString().replaceAll("\\n+", ",");
+                    String[] new_arr = Spaceless.split(",");
+                    Toast.makeText(ListingActivity.this, new_arr[5].toString(), Toast.LENGTH_LONG).show();
+                    //check to ensure that the listing is in the database
+                    validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
+                    //if success then grab isbn and take over to the next page.
+                    if (validateAndRetrieveId != -1) {
+                        Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
+                        int ISBNnum = Integer.parseInt(new_arr[5]);
+                        Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
+                        goBookpage.putExtra("isbn", ISBNnum);
+                        startActivity(goBookpage);
+                    } else {
+                        Snackbar.make(view, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Snackbar.make(view, "No Records to display.", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
