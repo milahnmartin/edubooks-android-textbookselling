@@ -2,6 +2,7 @@ package edubooks.main.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import java.util.Objects;
 
 import edubooks.main.R;
 import edubooks.main.controllers.DatabaseConnection;
+import edubooks.main.controllers.PasswordCreation;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,13 +42,31 @@ public class LoginActivity extends AppCompatActivity {
                     Snackbar.make(v, "One or more fields are empty", Snackbar.LENGTH_SHORT).show();
                 } else {
                     DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(LoginActivity.this);
+                    PasswordCreation PasswordCreationObj = new PasswordCreation(LoginActivity.this);
 
-                    if (DatabaseConnectionObj.validateUser(EmailTextView.getText().toString(),PasswordTextView.getText().toString())) {
+                    String EncryptedPasswordStr = PasswordCreation.encryptPassword(PasswordTextView.getText().toString());
+
+                    int validateAndRetrieveId = DatabaseConnectionObj.validateUser(EmailTextView.getText().toString(),EncryptedPasswordStr);
+                    if (validateAndRetrieveId != -1) {
                         Snackbar.make(v, "Success", Snackbar.LENGTH_SHORT).show();
+                        Intent listingIntent = new Intent(LoginActivity.this,ListingActivity.class);
+                        listingIntent.putExtra("user_id",validateAndRetrieveId);
+                        startActivity(listingIntent);
                     } else {
                         Snackbar.make(v, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        // Redirects to Signup once the "Don't Have an Account?" Text is clicked
+        TextView SignUpRedirect = (TextView) findViewById(R.id.SignUp);
+        SignUpRedirect.setOnClickListener (new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v1) {
+                Intent RedirectSignUp = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(RedirectSignUp);
             }
         });
     }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background1"
+        tools:context=".Activity.RegisterActivity">
+
+        <TextView
+            android:id="@+id/SignIn"
+            android:layout_width="200dp"
+            android:layout_height="57dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="EDUBOOKS"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="57dp"
+            android:layout_height="57dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/SignIn"
+            android:src="@drawable/logo" />
+
+        <EditText
+            android:id="@+id/ProfileInformation"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_below="@id/Logo"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_profile_box"
+            android:drawablePadding="20dp"
+            android:padding="20dp"
+            android:text="Profile Information"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:textColor="@color/Brown"
+            android:textColorHint="@color/Brown"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/Name"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/ProfileInformation"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_profile_box"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="Name: "
+            android:textColor="@color/Brown"
+            android:textColorHint="@color/Brown"
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/Surname"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/Name"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_profile_box"
+            android:padding="10dp"
+            android:text="Surname: "
+            android:textColor="@color/Brown"
+            android:textColorHint="@color/Brown"
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/Surname"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_profile_box"
+            android:padding="10dp"
+            android:text="Email: "
+            android:textColor="@color/Brown"
+            android:textColorHint="@color/Brown"
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/PhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@id/Email"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/ic_profile_box"
+            android:padding="10dp"
+            android:text="Phone: "
+            android:textColor="@color/Brown"
+            android:textColorHint="@color/Brown"
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/EditInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PhoneNumber"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/Dark_Orange"
+            android:text="Edit Information" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/EditInformation"
+            android:text="Change Password"
+            android:backgroundTint="@color/Dark_Orange"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/MyListing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ChangePassword"
+            android:text="My Listings"
+            android:backgroundTint="@color/Dark_Orange"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"/>
+
+    </RelativeLayout>
+</ScrollView>

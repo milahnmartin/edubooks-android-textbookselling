@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("THIS IS M");
         setContentView(R.layout.activity_main);
+
+
     }
 
     public void handleButton(@NonNull View v) {
