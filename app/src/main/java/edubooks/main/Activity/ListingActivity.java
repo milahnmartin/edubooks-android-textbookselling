@@ -55,7 +55,7 @@ public class ListingActivity extends AppCompatActivity {
         //StringBuffer ListedBooks =DatabaseConnectionObj.listingpagedetails();
         final ListView list = findViewById(R.id.list);
         ArrayList<String> arrayList = new ArrayList<>();
-        Cursor cursor =DatabaseConnectionObj.listingpagedetailsraw();
+        Cursor cursor = DatabaseConnectionObj.getListingPageDetails();
         //StringBuffer ListedBooksAll = new StringBuffer();
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
@@ -68,6 +68,7 @@ public class ListingActivity extends AppCompatActivity {
             }
         }
         else{
+            //@todo do we need to add this into a array if there are no books?
             arrayList.add("Database has no records.");
         }
 
