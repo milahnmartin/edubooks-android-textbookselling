@@ -106,48 +106,10 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return -1;
     }
 
-    public StringBuffer getAllListedBooks(){
-        SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook",null);
-        StringBuffer ListedBooksAll = new StringBuffer();
-        while(cursor.moveToNext()){
-            ListedBooksAll.append(cursor.getString(0)).append("\n");
-            ListedBooksAll.append(cursor.getString(1)).append("\n");
-            ListedBooksAll.append(cursor.getString(2)).append("\n");
-            ListedBooksAll.append(cursor.getString(3)).append("\n");
-            ListedBooksAll.append(cursor.getString(4)).append("\n");
-            ListedBooksAll.append(cursor.getString(5)).append("\n");
-            ListedBooksAll.append(cursor.getString(6)).append("\n");
-            ListedBooksAll.append(cursor.getString(7)).append("\n");
-            ListedBooksAll.append(cursor.getString(8)).append("\n");
-            ListedBooksAll.append(cursor.getString(9)).append("\n");
-        }
-        return ListedBooksAll;
-    }
-    public StringBuffer listingpagedetails(){
-        SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
-        StringBuffer ListedBooksAll = new StringBuffer();
-        while(cursor.moveToNext()){
-            ListedBooksAll.append(cursor.getString(0)).append("\n");
-            ListedBooksAll.append(cursor.getString(1)).append("\n");
-            ListedBooksAll.append(cursor.getString(2)).append("\n");
-            ListedBooksAll.append(cursor.getString(3)).append("\n");
-        }
-        return ListedBooksAll;
-    }
-    public Cursor listingpagedetailsraw(){
-        //SQLiteDatabase DB = this.getReadableDatabase();
+    public Cursor getListingPageDetails(){
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor cursor = DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
         return cursor;
-    }
-
-
-    public Boolean doesBookIdExist(int id){
-        SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook WHERE id = ?",new String[]{String.valueOf(id)});
-        return cursor.getCount() > 0;
     }
 
     public Cursor getListofBooksViaIsbN(int isbnNumber){
@@ -164,11 +126,6 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
             return cursor.getInt(0);
         }
         return -1;
-    }
-
-    public Cursor getallBooks(){
-        SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT * FROM ListedBook",new String[]{});
     }
 
     public JSONObject insertNewBook(String Title, String Author, String Category, String faculty, String Quality ,int IsbnNumber, boolean isAvailible,float bookPrice,int accountId) throws JSONException {
@@ -194,5 +151,12 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         JsonObj.put("Result", Boolean.valueOf(false));
         JsonObj.put("Message", "Something went wrong while adding new Book");
         return JsonObj;
+    }
+
+    public Cursor listingBookSearchQuery(String sQuery){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Title",sQuery);
+        return DB.rawQuery("SELECT * FROM ListedBook WHERE Title LIKE '%?%'",new String[]{sQuery});
     }
 }
