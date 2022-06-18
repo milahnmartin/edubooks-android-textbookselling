@@ -7,24 +7,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background1"
-    tools:context=".Activity.ListingActivity">
+    tools:context=".Activity.BookSpecificActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="25dp"
-            android:text="EduBooks"
-            android:textColor="#FFE4D6"
-            android:textSize="35dp"
-            android:textStyle="bold" />
-
         <ImageView
             android:id="@+id/BackButton"
             android:layout_width="50dp"
@@ -32,7 +20,21 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:text="Detailed Book info:"
+            android:textColor="#FFE4D6"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/Logo"
@@ -43,30 +45,11 @@
             android:layout_margin="10dp"
             android:src="@drawable/logo" />
 
-        <EditText
-            android:id="@+id/Search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Logo"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#30FFFFFF"
-            android:drawableLeft="@drawable/ic_baseline_search_24"
-            android:drawablePadding="20dp"
-            android:hint="Search for Books"
-            android:padding="20dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
-
-        <include layout="@layout/listing_layout" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="300dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="100dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@color/orange"
