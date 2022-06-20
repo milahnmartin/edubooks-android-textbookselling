@@ -10,30 +10,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.Objects;
 
 import edubooks.main.R;
 import edubooks.main.controllers.DatabaseConnection;
-import edubooks.main.controllers.PasswordCreation;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-public class create_listing extends AppCompatActivity {
+public class CreateListing extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +68,7 @@ public class create_listing extends AppCompatActivity {
                     }
                     else{
                         //____________________________
-                        DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(create_listing.this);
+                        DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(CreateListing.this);
     //insertNewBook(String Title*, String Author*, String Category*, String faculty*, String Quality* ,int IsbnNumber*, boolean isAvailible*,float bookPrice*,int accountId*)
                         try {
                             JSONObject InserBookJsonObj =  DatabaseConnectionObj.insertNewBook(
@@ -96,7 +86,7 @@ public class create_listing extends AppCompatActivity {
                                 // If Result from Json is true then user has been created
                                 // and the user is redirected
                                 Snackbar.make(view, "Book Listed!", Snackbar.LENGTH_SHORT).show();
-                                //Intent redirectLoginActivity = new Intent(create_listing.this,LoginActivity.class);
+                                //Intent redirectLoginActivity = new Intent(CreateListing.this,LoginActivity.class);
                                 //startActivity(redirectLoginActivity);
                             } else {
                                 // display the error message
@@ -113,13 +103,12 @@ public class create_listing extends AppCompatActivity {
             }
         });
         //early redictect to listing page
-        ImageButton BackHome = (ImageButton) findViewById(R.id.BackButton);
+        ImageView BackHome = (ImageView) findViewById(R.id.BackButton);
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
-                //Intent RedirectLogin = new Intent(create_listing.this, LoginActivity.class);
-                //startActivity(RedirectLogin);
-                Snackbar.make(v1, "Redirecting You Back Home!", Snackbar.LENGTH_SHORT).show();
+                Intent RedirectLogin = new Intent(CreateListing.this, ListingActivity.class);
+                startActivity(RedirectLogin);
             }
         });
         //react to click of +
