@@ -3,34 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_account.xml" value="0.3625" />
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/ic_baseline_lock_24.xml" value="0.1" />
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/ic_baseline_person_24.xml" value="0.1" />
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Users/Mikae/OneDrive/Documents/Third Year/ITMDA3-B12/Codes/EduBooks-ITMDA-Android/app/src/main/res/layout/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/Users/bluev/Documents/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/border_buttons.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_baseline_smartphone_24.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_profile_box.xml" value="0.3575" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_account.xml" value="0.17325227963525835" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_book_specific.xml" value="0.35625" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_listing.xml" value="0.3451086956521739" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_login.xml" value="0.3378623188405797" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_main.xml" value="0.3378623188405797" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_menu.xml" value="0.3378623188405797" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_profilesettings.xml" value="0.3378623188405797" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_register.xml" value="0.35625" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/create_listing.xml" value="0.17325227963525835" />
-        <entry key="..\:/Users/henri/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/listing_layout.xml" value="0.35625" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/drawable/ic_profile_box.xml" value="0.4965" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_account.xml" value="0.32065217391304346" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_listing.xml" value="0.39809782608695654" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_login.xml" value="0.32065217391304346" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_main.xml" value="0.262037037037037" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_profilesettings.xml" value="0.5" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/activity_register.xml" value="0.32065217391304346" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/create_listing.xml" value="0.4548952543822146" />
+        <entry key="..\:/Users/qexwe/OneDrive/Documents/GitHub/EduBooks-ITMDA-Android/app/src/main/res/layout/listing_layout.xml" value="0.5541666666666667" />
       </map>
     </option>
   </component>
