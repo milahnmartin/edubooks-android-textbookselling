@@ -31,6 +31,10 @@ public class CreateListing extends AppCompatActivity {
         setContentView(R.layout.create_listing);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        Intent loggeduser = getIntent();
+        //-1 shows user_id couldnt be retrieved or error occured
+        int userId = loggeduser.getIntExtra("user_id",-1);
+
         TextView BookTitleTextView = findViewById(R.id.BookTitle);
         TextView AuthorNameTextView = findViewById(R.id.AuthorName);
         TextView ISBNTextView = findViewById(R.id.ISBNnr);
@@ -80,7 +84,7 @@ public class CreateListing extends AppCompatActivity {
                                     Integer.parseInt(ISBNTextView.getText().toString()),
                                     true,
                                     Float.parseFloat(SellingPriceTextView.getText().toString()),
-                                    1
+                                    userId
                             );
                             if ((Boolean) InsertBookJsonObj.get("Result")) {
                                 // If Result from Json is true then user has been created
@@ -108,6 +112,7 @@ public class CreateListing extends AppCompatActivity {
             @Override
             public void onClick(View v1) {
                 Intent RedirectLogin = new Intent(CreateListing.this, ListingActivity.class);
+                RedirectLogin.putExtra("user_id",userId);
                 startActivity(RedirectLogin);
             }
         });
@@ -116,7 +121,7 @@ public class CreateListing extends AppCompatActivity {
         UploadBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
-                Snackbar.make(v1, "Picture Uploaded!", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(v1, "Picture Uploaded!" + userId, Snackbar.LENGTH_SHORT).show();
             }
         });
     }

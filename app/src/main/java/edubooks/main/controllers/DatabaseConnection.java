@@ -117,7 +117,12 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getListofBooksViaIsbN(int isbnNumber){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price, AccountId FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+    }
+
+    public Cursor getownerid(int id){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        return DB.rawQuery("SELECT * FROM ListedBook WHERE Id = ?",new String[]{String.valueOf(id)});
     }
 
     //listing page check if clicked item is in db to confirm and then take over to page specific
