@@ -122,7 +122,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getownerid(int id){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT * FROM ListedBook WHERE Id = ?",new String[]{String.valueOf(id)});
+        return DB.rawQuery("SELECT * FROM Account WHERE Id = ?",new String[]{String.valueOf(id)});
     }
 
     //listing page check if clicked item is in db to confirm and then take over to page specific
