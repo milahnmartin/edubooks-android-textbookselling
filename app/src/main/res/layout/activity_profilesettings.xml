@@ -50,7 +50,7 @@
             android:layout_toRightOf="@id/SignIn"
             android:src="@drawable/logo" />
 
-        <EditText
+        <TextView
             android:id="@+id/ProfileInformation"
             android:layout_width="match_parent"
             android:layout_height="75dp"
