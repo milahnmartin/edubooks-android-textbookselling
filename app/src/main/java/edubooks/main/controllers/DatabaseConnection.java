@@ -157,6 +157,6 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         SQLiteDatabase DB = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Title",sQuery);
-        return DB.rawQuery("SELECT * FROM ListedBook WHERE Title LIKE '%?%'",new String[]{sQuery});
+        return DB.rawQuery("SELECT * FROM ListedBook WHERE Title LIKE '%' || ? || '%'",new String[]{sQuery});
     }
 }
