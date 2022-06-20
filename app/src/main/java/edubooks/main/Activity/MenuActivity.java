@@ -19,6 +19,10 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        Intent menu = getIntent();
+        //-1 shows user_id couldnt be retrieved or error occured
+        int userId = menu.getIntExtra("user_id",-1);
+
         Button btnHome = findViewById(R.id.navhome);
         Button btnCreateListing = findViewById(R.id.navcreatelisting);
         Button btnProfile = findViewById(R.id.navprofile);
@@ -36,6 +40,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, AccountActivity.class);
+                intent.putExtra("user_id",userId);
                 startActivity(intent);
             }
         });
@@ -44,6 +49,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, CreateListing.class);
+                intent.putExtra("user_id",userId);
                 startActivity(intent);
             }
         });

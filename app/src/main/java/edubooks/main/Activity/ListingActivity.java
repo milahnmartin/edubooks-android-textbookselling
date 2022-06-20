@@ -91,7 +91,7 @@ public class ListingActivity extends AppCompatActivity {
                         Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
                         int ISBNnum = Integer.parseInt(new_arr[5]);
                         Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
-                        goBookpage.putExtra("isbn", ISBNnum);
+                        goBookpage.putExtra("isbn", ISBNnum + "," + userId);
                         startActivity(goBookpage);
                     } else {
                         Snackbar.make(view, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();

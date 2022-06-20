@@ -23,16 +23,20 @@ public class BookSpecificActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_specific);
-
         Intent LoginIntent = getIntent();
         //-1 shows user_id couldnt be retrieved or error occured
-        int isbnget = LoginIntent.getIntExtra("isbn",0);
+        String getvariable = LoginIntent.getStringExtra("isbn");
+        String[] new_arr = getvariable.split(",");
+        int isbnget = Integer.parseInt(new_arr[0]);
+        int userId = Integer.parseInt(new_arr[1]);
+
         Objects.requireNonNull(getSupportActionBar()).hide();
         ImageView BackHome = (ImageView) findViewById(R.id.BackButton);
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
                 Intent RedirectLogin = new Intent(BookSpecificActivity.this, ListingActivity.class);
+                RedirectLogin.putExtra("user_id",userId);
                 startActivity(RedirectLogin);
             }
         });
@@ -40,13 +44,29 @@ public class BookSpecificActivity extends AppCompatActivity {
         ArrayList<String> arrayList = new ArrayList<>();
         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(BookSpecificActivity.this);
         Cursor isbn = DatabaseConnectionObj.getListofBooksViaIsbN(isbnget);
+        arrayList.add("Book information:");
+        String[] bookinfo = new String[] { "Book owner information:", ""};
         while(isbn.moveToNext()){
             String BookN = isbn.getString(0);
             String Author = isbn.getString(1);
             String ISBN = isbn.getString(2);
             String Price = isbn.getString(3);
+            String id_dat = isbn.getString(4);
+            bookinfo[1] = id_dat;
             String listitem = "Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
             arrayList.add(listitem);
+        }
+        //db.execSQL("create table Account(Id INTEGER PRIMARY KEY AUTOINCREMENT,FirstName TEXT,LastName TEXT,EmailAddress TEXT,Password TEXT,PhoneNumber TEXT)");
+        arrayList.add(bookinfo[0]);
+        Cursor bookowner = DatabaseConnectionObj.getownerid(Integer.parseInt(bookinfo[1]));
+        while(bookowner.moveToNext()){
+            String fname = bookowner.getString(1);
+            String lname = bookowner.getString(2);
+            String email = bookowner.getString(3);
+            String number = bookowner.getString(5);
+            String ownerdetails = "Owner Name:" + fname + " " + lname + "\n" + "Owner email:" + email +
+                    "\nOwner Phone Number:" + number;
+            arrayList.add(ownerdetails);
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         list.setAdapter(arrayAdapter);
@@ -56,7 +76,5 @@ public class BookSpecificActivity extends AppCompatActivity {
                 String clickedItem = (String) list.getItemAtPosition(position);
             }
         });
-
-
     }
 }

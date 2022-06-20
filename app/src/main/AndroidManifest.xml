@@ -14,10 +14,10 @@
         android:theme="@style/Theme.Edubookitmda"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.CreateListing"
+            android:name=".Activity.BookSpecificActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.CreateListing"
             android:exported="false" />
         <activity
             android:name=".Activity.ListingActivity"
@@ -33,7 +33,10 @@
             android:exported="false" />
         <activity
             android:name=".Activity.MenuActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
