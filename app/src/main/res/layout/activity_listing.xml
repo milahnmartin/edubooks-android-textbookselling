@@ -19,20 +19,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_margin="25dp"
-            android:text="EduBooks"
-            android:textColor="#FFE4D6"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:text="EDUBOOKS"
+            android:textColor="#FFFFFF"
             android:textSize="35dp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/BackButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_baseline_format_list_bulleted_24" />
+            android:src="@drawable/menuwhite" />
 
         <ImageView
             android:id="@+id/Logo"
@@ -40,7 +43,10 @@
             android:layout_height="75dp"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/logo" />
 
         <EditText

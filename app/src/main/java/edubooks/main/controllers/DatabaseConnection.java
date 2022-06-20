@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public DatabaseConnection(Context context) {
@@ -71,17 +73,18 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 //      THIS CHECKS IF ANY RECORDS WERE CHANGED RETURN TRUE IF IT DID FALSE IF NOT
         return result != -1;
     }
-    public Cursor getAccountInfo(int userID){
+    public HashMap<String,String> getAccountInfo(int userID) {
+        HashMap<String, String> userInfo = new HashMap<>();
         SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("select * from Account where id = ?",new String[]{String.valueOf(userID)});
-//      RETURNS CURSOR OBJECT THAT IS A ITERABLE AND REQUIRES LOOP TO ITERATE THROUGH
-        return cursor;
-    }
-
-    public Cursor getAllAccountInfo(){
-        SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("select * from Account",null);
-        return cursor;
+        Cursor cursor = DB.rawQuery("select * from Account where id = ?", new String[]{String.valueOf(userID)});
+        if (cursor.moveToFirst()) {
+            userInfo.put("FirstName", cursor.getString(1));
+            userInfo.put("LastName", cursor.getString(2));
+            userInfo.put("EmailAddress", cursor.getString(3));
+            userInfo.put("PhoneNumber", cursor.getString(5));
+            return userInfo;
+        }
+        return null;
     }
 
     public Boolean deleteAccount(int userID){
@@ -155,8 +158,6 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor listingBookSearchQuery(String sQuery){
         SQLiteDatabase DB = this.getReadableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("Title",sQuery);
-        return DB.rawQuery("SELECT * FROM ListedBook WHERE Title LIKE '%?%'",new String[]{sQuery});
+        return DB.rawQuery("SELECT * FROM ListedBook WHERE Title LIKE '%' || ? || '%'",new String[]{sQuery});
     }
 }

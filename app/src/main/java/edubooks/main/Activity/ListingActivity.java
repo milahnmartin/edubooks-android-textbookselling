@@ -77,7 +77,7 @@ public class ListingActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem=(String) list.getItemAtPosition(position);
+                String clickedItem = (String) list.getItemAtPosition(position);
                 int validateAndRetrieveId = -1;
                 if(clickedItem != "Database has no records.") {
                     String New_list = clickedItem.toString().replaceAll(":", ",");

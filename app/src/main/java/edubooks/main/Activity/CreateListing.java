@@ -71,7 +71,7 @@ public class CreateListing extends AppCompatActivity {
                         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(CreateListing.this);
     //insertNewBook(String Title*, String Author*, String Category*, String faculty*, String Quality* ,int IsbnNumber*, boolean isAvailible*,float bookPrice*,int accountId*)
                         try {
-                            JSONObject InserBookJsonObj =  DatabaseConnectionObj.insertNewBook(
+                            JSONObject InsertBookJsonObj =  DatabaseConnectionObj.insertNewBook(
                                     BookTitleTextView.getText().toString(),
                                     AuthorNameTextView.getText().toString(),
                                     BookCategory.getText().toString(),
@@ -82,7 +82,7 @@ public class CreateListing extends AppCompatActivity {
                                     Float.parseFloat(SellingPriceTextView.getText().toString()),
                                     1
                             );
-                            if ((Boolean) InserBookJsonObj.get("Result")) {
+                            if ((Boolean) InsertBookJsonObj.get("Result")) {
                                 // If Result from Json is true then user has been created
                                 // and the user is redirected
                                 Snackbar.make(view, "Book Listed!", Snackbar.LENGTH_SHORT).show();
@@ -90,7 +90,7 @@ public class CreateListing extends AppCompatActivity {
                                 //startActivity(redirectLoginActivity);
                             } else {
                                 // display the error message
-                                String MessageStr = (String) InserBookJsonObj.get("Message");
+                                String MessageStr = (String) InsertBookJsonObj.get("Message");
                                 Snackbar.make(view, MessageStr, Snackbar.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -121,12 +121,12 @@ public class CreateListing extends AppCompatActivity {
         });
     }
     // validate isbn for either 10/13 numbers
-    private boolean ISBNValid(String isbnstr) {
+    public boolean ISBNValid(String isbnstr) {
         String RegexStr = "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)[\\d-]+$";
         return isbnstr.matches(RegexStr);
     }
     // validate price with one or two decimals with either use of '.' or ','
-    private boolean priceValid(String pricestr) {
+    public boolean priceValid(String pricestr) {
         String RegexStr = "^\\d+((,|.)\\d{1,2})?$";
         return pricestr.matches(RegexStr);
     }
