@@ -58,7 +58,7 @@ public class BookSpecificActivity extends AppCompatActivity {
         }
         //db.execSQL("create table Account(Id INTEGER PRIMARY KEY AUTOINCREMENT,FirstName TEXT,LastName TEXT,EmailAddress TEXT,Password TEXT,PhoneNumber TEXT)");
         arrayList.add(bookinfo[0]);
-        Cursor bookowner = DatabaseConnectionObj.getownerid(Integer.parseInt(bookinfo[1]));
+        Cursor bookowner = DatabaseConnectionObj.getOwnerId(Integer.parseInt(bookinfo[1]));
         while(bookowner.moveToNext()){
             String fname = bookowner.getString(1);
             String lname = bookowner.getString(2);
