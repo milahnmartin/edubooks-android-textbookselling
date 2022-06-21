@@ -120,7 +120,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price, AccountId FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
     }
 
-    public Cursor getownerid(int id){
+    public Cursor getOwnerId(int id){
         SQLiteDatabase DB = this.getReadableDatabase();
         return DB.rawQuery("SELECT * FROM Account WHERE Id = ?",new String[]{String.valueOf(id)});
     }
