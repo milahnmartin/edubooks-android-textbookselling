@@ -52,11 +52,11 @@
         <TextView
             android:id="@+id/ProfileInformation"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Logo"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
             android:drawablePadding="20dp"
             android:padding="20dp"
@@ -65,72 +65,70 @@
             android:textAlignment="center"
             android:gravity="center"
             android:textColor="@color/Brown"
-            android:textColorHint="@color/Brown"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/Name"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/ProfileInformation"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
             android:drawablePadding="20dp"
-            android:padding="10dp"
-            android:text="Name: "
+            android:padding="15dp"
+            android:hint="Name"
             android:textSize="14dp"
+            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
-            android:textColorHint="@color/Brown"
-
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/Surname"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Name"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
-            android:padding="10dp"
-            android:text="Surname: "
+            android:padding="15dp"
+            android:hint="Surname"
+            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
-            android:textColorHint="@color/Brown"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/Email"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Surname"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
-            android:padding="10dp"
-            android:text="Email: "
+            android:padding="15dp"
+            android:hint="Email"
+            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
-            android:textColorHint="@color/Brown"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/PhoneNumber"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Email"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
-            android:padding="10dp"
-            android:text="Phone: "
+            android:padding="15dp"
+            android:hint="Phone"
+            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
-            android:textColorHint="@color/Brown"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -139,36 +137,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/PhoneNumber"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="25dp"
             android:textColor="@color/Off_white"
             android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="25dp"
-            android:text="Edit Information" />
+            android:text="Update Information"
+            android:shadowColor="@color/Brown" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ChangePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/EditInformation"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"
             android:text="Change Password"
             android:textColor="@color/Off_white"
             android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="100dp"
+            android:shadowColor="@color/Brown" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/MyListing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ChangePassword"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"
             android:text="My Listings"
             android:textColor="@color/Off_white"
             android:backgroundTint="@color/Dark_Orange"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="100dp"
+            android:shadowColor="@color/Brown" />
 
     </RelativeLayout>
 </ScrollView>
