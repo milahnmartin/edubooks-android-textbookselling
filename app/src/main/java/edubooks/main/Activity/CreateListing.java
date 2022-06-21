@@ -88,10 +88,11 @@ public class CreateListing extends AppCompatActivity {
                             );
                             if ((Boolean) InsertBookJsonObj.get("Result")) {
                                 // If Result from Json is true then user has been created
-                                // and the user is redirected
                                 Snackbar.make(view, "Book Listed!", Snackbar.LENGTH_SHORT).show();
-                                //Intent redirectLoginActivity = new Intent(CreateListing.this,LoginActivity.class);
-                                //startActivity(redirectLoginActivity);
+                                // and the user is redirected
+                                Intent RedirectLogin = new Intent(CreateListing.this, ListingActivity.class);
+                                RedirectLogin.putExtra("user_id",userId);
+                                startActivity(RedirectLogin);
                             } else {
                                 // display the error message
                                 String MessageStr = (String) InsertBookJsonObj.get("Message");

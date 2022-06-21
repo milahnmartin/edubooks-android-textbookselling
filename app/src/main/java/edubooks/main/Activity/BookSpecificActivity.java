@@ -68,6 +68,8 @@ public class BookSpecificActivity extends AppCompatActivity {
                     "\nOwner Phone Number:" + number;
             arrayList.add(ownerdetails);
         }
+        //ImageView i = new ImageView(this);
+        //i.setImageResource(R.drawable.img_1);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
