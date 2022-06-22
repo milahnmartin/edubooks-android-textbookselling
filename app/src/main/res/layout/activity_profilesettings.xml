@@ -47,6 +47,7 @@
             android:layout_toRightOf="@id/SignIn"
             android:src="@drawable/logo" />
 
+
         <EditText
             android:id="@+id/Name"
             android:layout_width="match_parent"
@@ -54,39 +55,44 @@
             android:layout_below="@id/SignIn"
             android:layout_marginStart="50dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
             android:drawablePadding="20dp"
+
             android:hint="Name"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/Brown"
             android:textSize="14dp" />
 
+
         <EditText
             android:id="@+id/Surname"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Name"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
+
             android:padding="10dp"
             android:hint="Surname"
             android:textColor="@color/black"
             android:textColorHint="@color/Brown"
             android:textSize="14dp"  />
 
+
         <EditText
             android:id="@+id/Email"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Surname"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
+
             android:padding="10dp"
             android:hint="Email Address "
             android:textColor="@color/black"
@@ -96,12 +102,13 @@
         <EditText
             android:id="@+id/PhoneNumber"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/Email"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/ic_profile_box"
+
             android:hint="Phone Number"
             android:padding="10dp"
             android:textColor="@color/black"
@@ -128,6 +135,7 @@
             android:id="@+id/EditInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_below="@id/ProfilePassword"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="100dp"
@@ -136,10 +144,12 @@
             android:text="Update Information"
             android:textColor="@color/Off_white" />
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/MyListing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_below="@id/EditInformation"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="100dp"
@@ -147,6 +157,7 @@
             android:backgroundTint="@color/Brown"
             android:text="My Listings"
             android:textColor="@color/Off_white" />
+
 
     </RelativeLayout>
 </ScrollView>
