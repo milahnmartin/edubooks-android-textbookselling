@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //validates password
-    private boolean isValidPassword(String PasswordStr) {
+    public boolean isValidPassword(String PasswordStr) {
         // The password should be at least 8 characters long.
         // The password should contain at least one lower case.
         // The password should contain at least one upper case.
@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // validates email
-    private boolean isEmailValid(String EmailStr) {
+    public boolean isEmailValid(String EmailStr) {
         String RegexStr = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         return EmailStr.matches(RegexStr);
     }

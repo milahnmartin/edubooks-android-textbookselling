@@ -44,8 +44,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         contentValues.put("EmailAddress",EmailAddress);
         contentValues.put("Password",Password);
         contentValues.put("PhoneNumber",PhoneNumber);
-        Cursor doesUserEmailExistResultCursor = DB.rawQuery("SELECT EmailAddress FROM Account WHERE EmailAddress = ?",new String[]{EmailAddress});
-        if (doesUserEmailExistResultCursor.getCount() > 0) {
+        if (doesEmailExist(EmailAddress)) {
             JsonObj.put("Result", Boolean.valueOf(false));
             JsonObj.put("Message", "This Email Address Already Exists");
             return JsonObj;
@@ -60,29 +59,32 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return JsonObj;
     }
 
-    public Boolean updateAccountDetails(String FirstName,String LastName,String EmailAddress,String Password,String PhoneNumber,int userId){
+    public Boolean doesEmailExist(String EmailAddress) {
+        boolean DoesEmailExistBool = false;
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor doesUserEmailExistResultCursor = DB.rawQuery("SELECT EmailAddress FROM Account WHERE EmailAddress = ?",new String[]{EmailAddress});
+        if (doesUserEmailExistResultCursor.getCount() > 0) {
+            DoesEmailExistBool = true;
+        }
+        return DoesEmailExistBool;
+    }
+
+    public Boolean updateAccountDetails(ContentValues AccountDetailsContentValues, int userId){
         SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("FirstName",FirstName);
-        contentValues.put("LastName",LastName);
-        contentValues.put("LastName",LastName);
-        contentValues.put("EmailAddress",EmailAddress);
-        contentValues.put("Password",Password);
-        contentValues.put("PhoneNumber",PhoneNumber);
-        int result = DB.update("Account",contentValues,"Id=?",new String[]{String.valueOf(userId)});
+        int result = DB.update("Account",AccountDetailsContentValues,"Id=?",new String[]{String.valueOf(userId)});
 //      THIS CHECKS IF ANY RECORDS WERE CHANGED RETURN TRUE IF IT DID FALSE IF NOT
         return result != -1;
     }
-    public HashMap<String,String> getAccountInfo(int userID) {
-        HashMap<String, String> userInfo = new HashMap<>();
+    public JSONObject getAccountInfo(int userID) throws JSONException {
+        JSONObject JsonObj = new JSONObject();
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery("select * from Account where id = ?", new String[]{String.valueOf(userID)});
         if (cursor.moveToFirst()) {
-            userInfo.put("FirstName", cursor.getString(1));
-            userInfo.put("LastName", cursor.getString(2));
-            userInfo.put("EmailAddress", cursor.getString(3));
-            userInfo.put("PhoneNumber", cursor.getString(5));
-            return userInfo;
+            JsonObj.put("FirstName",cursor.getString(1));
+            JsonObj.put("LastName",cursor.getString(2));
+            JsonObj.put("EmailAddress",cursor.getString(3));
+            JsonObj.put("PhoneNumber",cursor.getString(5));
+            return JsonObj;
         }
         return null;
     }
