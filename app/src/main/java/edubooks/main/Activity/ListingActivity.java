@@ -9,8 +9,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
@@ -55,7 +59,75 @@ public class ListingActivity extends AppCompatActivity {
             }
         });
         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(ListingActivity.this);
-        //StringBuffer ListedBooks =DatabaseConnectionObj.listingpagedetails();
+        EditText listingsSearch = findViewById(R.id.Search);
+
+        listingsSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String searchParams = String.valueOf(s);
+                final ListView list = findViewById(R.id.list);
+                ArrayList<String> arrayList = new ArrayList<>();
+                Cursor cursor = DatabaseConnectionObj.listingBookSearchQuery(searchParams);
+                //StringBuffer ListedBooksAll = new StringBuffer();
+                if(cursor.getCount() > 0){
+                    while(cursor.moveToNext()){
+                        String BookN = cursor.getString(0);
+                        String Author = cursor.getString(1);
+                        String ISBN = cursor.getString(2);
+                        String Price = cursor.getString(3);
+                        String listitem = "Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
+                        arrayList.add(listitem);
+                    }
+                }
+                else{
+                    //@todo do we need to add this into a array if there are no books?
+                    arrayList.add("Database has no records.");
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ListingActivity.this, android.R.layout.simple_list_item_1, arrayList);
+                list.setAdapter(arrayAdapter);
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String clickedItem = (String) list.getItemAtPosition(position);
+                        int validateAndRetrieveId = -1;
+                        if(clickedItem != "Database has no records.") {
+                            String New_list = clickedItem.toString().replaceAll(":", ",");
+                            String Spaceless = New_list.toString().replaceAll("\\n+", ",");
+                            String[] new_arr = Spaceless.split(",");
+                            Toast.makeText(ListingActivity.this, new_arr[5].toString(), Toast.LENGTH_LONG).show();
+                            //check to ensure that the listing is in the database
+                            validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
+                            //if success then grab isbn and take over to the next page.
+                            if (validateAndRetrieveId != -1) {
+                                Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
+                                int ISBNnum = Integer.parseInt(new_arr[5]);
+                                Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
+                                goBookpage.putExtra("isbn", ISBNnum + "," + userId);
+                                startActivity(goBookpage);
+                            } else {
+                                Snackbar.make(view, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            Snackbar.make(view, "No Records to display.", Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
+
         final ListView list = findViewById(R.id.list);
         ArrayList<String> arrayList = new ArrayList<>();
         Cursor cursor = DatabaseConnectionObj.getListingPageDetails();
@@ -75,7 +147,7 @@ public class ListingActivity extends AppCompatActivity {
             arrayList.add("Database has no records.");
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ListingActivity.this, android.R.layout.simple_list_item_1, arrayList);
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,5 +176,8 @@ public class ListingActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
     }
 }
