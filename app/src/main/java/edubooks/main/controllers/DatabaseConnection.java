@@ -60,13 +60,9 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
     }
 
     public Boolean doesEmailExist(String EmailAddress) {
-        boolean DoesEmailExistBool = false;
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor doesUserEmailExistResultCursor = DB.rawQuery("SELECT EmailAddress FROM Account WHERE EmailAddress = ?",new String[]{EmailAddress});
-        if (doesUserEmailExistResultCursor.getCount() > 0) {
-            DoesEmailExistBool = true;
-        }
-        return DoesEmailExistBool;
+        return doesUserEmailExistResultCursor.getCount() > 0;
     }
 
     public Boolean updateAccountDetails(ContentValues AccountDetailsContentValues, int userId){
@@ -113,8 +109,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getListingPageDetails(){
         SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
-        return cursor;
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
     }
 
     public Cursor getListofBooksViaIsbN(int isbnNumber){
