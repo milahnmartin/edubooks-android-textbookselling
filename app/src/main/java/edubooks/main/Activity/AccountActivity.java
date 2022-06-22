@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -44,6 +45,7 @@ public class AccountActivity extends AppCompatActivity {
         Intent loggeduser = getIntent();
         //-1 shows user_id couldnt be retrieved or error occured
         int userId = loggeduser.getIntExtra("user_id",-1);
+        Log.d("EDUEXTRA",String.valueOf(userId));
         TextView FirstNameTextView = (TextView)findViewById(R.id.Name);
         TextView LastNameTextView = (TextView)findViewById(R.id.Surname);
         TextView EmailTextView = (TextView)findViewById(R.id.Email);
@@ -147,7 +149,7 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
 
-        ImageView BackHome = (ImageView) findViewById(R.id.BackButton);
+        ImageView BackHome = findViewById(R.id.BackButton);
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {

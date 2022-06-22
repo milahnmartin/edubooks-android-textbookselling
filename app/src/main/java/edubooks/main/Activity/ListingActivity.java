@@ -47,7 +47,10 @@ public class ListingActivity extends AppCompatActivity {
             public void onClick(View v1) {
                 //Snackbar.make(v1, ListedBooks.toString(), Snackbar.LENGTH_SHORT).show();
                 Intent RedirectMenu = new Intent(ListingActivity.this, MenuActivity.class);
-                RedirectMenu.putExtra("user_id",userId);
+                Bundle extras = new Bundle();
+                extras.putInt("user_id",userId);
+                extras.putString("activity_initiate","edubooks.main.Activity.ListingActivity");
+                RedirectMenu.putExtras(extras);
                 startActivity(RedirectMenu);
             }
         });

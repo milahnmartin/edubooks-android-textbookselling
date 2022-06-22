@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -20,18 +24,34 @@ public class MenuActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         Intent menu = getIntent();
-        //-1 shows user_id couldnt be retrieved or error occured
-        int userId = menu.getIntExtra("user_id",-1);
-
+        Bundle extras = menu.getExtras();
+        int userId = extras.getInt("user_id");
+        String initiatedActivity = extras.getString("activity_initiate");
         Button btnHome = findViewById(R.id.navhome);
         Button btnCreateListing = findViewById(R.id.navcreatelisting);
         Button btnProfile = findViewById(R.id.navprofile);
         Button btnLogout = findViewById(R.id.navlogout);
+        ImageView closeMenuBTN = findViewById(R.id.closeMenuBTN);
+
+        closeMenuBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = null;
+                try {
+                    intent = new Intent(MenuActivity.this, Class.forName(initiatedActivity));
+                    intent.putExtra("user_id",userId);
+                } catch (ClassNotFoundException e) {
+                    Snackbar.make(v, "Something Went Wrong", Snackbar.LENGTH_SHORT).show();
+                }
+                startActivity(intent);
+            }
+        });
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, ListingActivity.class);
+                intent.putExtra("user_id",userId);
                 startActivity(intent);
             }
         });
