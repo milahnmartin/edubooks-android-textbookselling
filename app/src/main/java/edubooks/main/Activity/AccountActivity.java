@@ -153,7 +153,7 @@ public class AccountActivity extends AppCompatActivity {
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
-                Intent RedirectLogin = new Intent(AccountActivity.this, ListingActivity.class);
+                Intent RedirectLogin = new Intent(AccountActivity.this, MenuActivity.class);
                 RedirectLogin.putExtra("user_id",userId);
                 startActivity(RedirectLogin);
             }

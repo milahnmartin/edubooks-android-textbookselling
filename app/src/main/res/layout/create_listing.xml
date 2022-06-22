@@ -14,13 +14,12 @@
 
         <ImageView
             android:id="@+id/BackButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="25dp"
-            android:layout_toLeftOf="@id/Title"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/menuwhite" />
 
         <TextView
             android:id="@+id/Title"
@@ -87,13 +86,13 @@
             android:height="30dp"
             android:background="@drawable/ic_profile_box"
             android:ems="10"
+            android:hint="Enter a book title"
             android:inputType="textPersonName"
             android:padding="15dp"
-            android:hint="Enter a book title"
-            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
+            android:textColorHint="#a2a2a2"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/AuthorName"
@@ -166,10 +165,10 @@
             android:hint="Enter book faculty"
             android:inputType="text"
             android:padding="15dp"
-            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
+            android:textColorHint="#a2a2a2"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
 
         <EditText
@@ -206,8 +205,8 @@
             android:hint="Enter book condition"
             android:inputType="textPersonName"
             android:padding="15dp"
-            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
+            android:textColorHint="#a2a2a2"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -216,14 +215,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/BookCondition"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/Dark_Orange"
+            android:shadowColor="@color/Brown"
+            android:shadowRadius="510"
             android:text="List Book"
-            android:textColor="@color/Off_white"
-            android:shadowColor="@color/Brown" />
+            android:textColor="@color/Off_white" />
 
     </RelativeLayout>
 </ScrollView>
