@@ -45,7 +45,6 @@ public class AccountActivity extends AppCompatActivity {
         Intent loggeduser = getIntent();
         //-1 shows user_id couldnt be retrieved or error occured
         int userId = loggeduser.getIntExtra("user_id",-1);
-        Log.d("EDUEXTRA",String.valueOf(userId));
         TextView FirstNameTextView = (TextView)findViewById(R.id.Name);
         TextView LastNameTextView = (TextView)findViewById(R.id.Surname);
         TextView EmailTextView = (TextView)findViewById(R.id.Email);
@@ -154,7 +153,10 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v1) {
                 Intent RedirectLogin = new Intent(AccountActivity.this, MenuActivity.class);
-                RedirectLogin.putExtra("user_id",userId);
+                Bundle extras = new Bundle();
+                extras.putInt("user_id",userId);
+                extras.putString("activity_initiate","edubooks.main.Activity.AccountActivity");
+                RedirectLogin.putExtras(extras);
                 startActivity(RedirectLogin);
             }
         });

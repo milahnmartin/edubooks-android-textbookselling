@@ -113,7 +113,10 @@ public class CreateListing extends AppCompatActivity {
             @Override
             public void onClick(View v1) {
                 Intent RedirectLogin = new Intent(CreateListing.this, MenuActivity.class);
-                RedirectLogin.putExtra("user_id",userId);
+                Bundle extras = new Bundle();
+                extras.putInt("user_id",userId);
+                extras.putString("activity_initiate","edubooks.main.Activity.CreateListing");
+                RedirectLogin.putExtras(extras);
                 startActivity(RedirectLogin);
             }
         });
