@@ -42,8 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                     Snackbar.make(v, "One or more fields are empty", Snackbar.LENGTH_SHORT).show();
                 } else {
                     DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(LoginActivity.this);
-                    PasswordCreation PasswordCreationObj = new PasswordCreation(LoginActivity.this);
-
                     String EncryptedPasswordStr = PasswordCreation.encryptPassword(PasswordTextView.getText().toString());
 
                     int validateAndRetrieveId = DatabaseConnectionObj.validateUser(EmailTextView.getText().toString(),EncryptedPasswordStr);
