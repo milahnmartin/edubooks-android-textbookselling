@@ -97,10 +97,10 @@ public class ListingActivity extends AppCompatActivity {
                         String clickedItem = (String) list.getItemAtPosition(position);
                         int validateAndRetrieveId = -1;
                         if(clickedItem != "Database has no records.") {
-                            String New_list = clickedItem.toString().replaceAll(":", ",");
-                            String Spaceless = New_list.toString().replaceAll("\\n+", ",");
+                            String New_list = clickedItem.replaceAll(":", ",");
+                            String Spaceless = New_list.replaceAll("\\n+", ",");
                             String[] new_arr = Spaceless.split(",");
-                            Toast.makeText(ListingActivity.this, new_arr[5].toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(ListingActivity.this, new_arr[5], Toast.LENGTH_LONG).show();
                             //check to ensure that the listing is in the database
                             validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
                             //if success then grab isbn and take over to the next page.
