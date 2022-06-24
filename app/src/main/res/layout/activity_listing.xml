@@ -66,16 +66,16 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
 
-        <include layout="@layout/listing_layout" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="220dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/orange"
+            android:background="#FFE4D6"
             android:orientation="vertical">
 
             <ListView

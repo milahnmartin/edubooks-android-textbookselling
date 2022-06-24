@@ -78,21 +78,21 @@ public class BookSpecificActivity extends AppCompatActivity {
                 String clickedItem = (String) list.getItemAtPosition(position);
             }
         });
-        final ListView list2 = findViewById(R.id.list2);
-        ArrayList<ImageView> imageList = new ArrayList<>();
-        ImageView image = new ImageView(this);
-        image.setImageResource(R.drawable.img_1);
-        imageList.add(image);
-        //imagelist.add(R.drawable.img_1);
-        //iv.setImageResource(imagelist .get(position));
-        ArrayAdapter<ImageView> imageAdapter = new ArrayAdapter<ImageView>(this, android.R.layout.simple_list_item_1, imageList);
-        list2.setAdapter(imageAdapter);
-        list2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem = (String) list2.getItemAtPosition(position);
-            }
-        });
+//        final ListView list2 = findViewById(R.id.list2);
+//        ArrayList<ImageView> imageList = new ArrayList<>();
+//        ImageView image = new ImageView(this);
+//        image.setImageResource(R.drawable.img_1);
+//        imageList.add(image);
+//        //imagelist.add(R.drawable.img_1);
+//        //iv.setImageResource(imagelist .get(position));
+//        ArrayAdapter<ImageView> imageAdapter = new ArrayAdapter<ImageView>(this, android.R.layout.simple_list_item_1, imageList);
+//        list2.setAdapter(imageAdapter);
+//        list2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                String clickedItem = (String) list2.getItemAtPosition(position);
+//            }
+//        });
 
 //        final ListView list2 = findViewById(R.id.list2);
 //        ArrayList<String> imagelist = new ArrayList<>();
