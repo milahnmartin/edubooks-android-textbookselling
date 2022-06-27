@@ -160,5 +160,18 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(RedirectLogin);
             }
         });
+        MaterialButton MyListingsBtn = (MaterialButton) findViewById(R.id.MyListing);
+        MyListingsBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                Intent RedirectLogin = new Intent(AccountActivity.this, UserListings.class);
+                Bundle extras = new Bundle();
+                extras.putInt("user_id",userId);
+                extras.putString("activity_initiate","edubooks.main.Activity.AccountActivity");
+                RedirectLogin.putExtras(extras);
+                startActivity(RedirectLogin);
+            }
+        });
     }
 }

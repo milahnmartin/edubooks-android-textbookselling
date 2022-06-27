@@ -35,6 +35,12 @@
             android:name=".Activity.MenuActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.UserListings"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.UserBookSpecificActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.LoginActivity"
             android:exported="true" >
             <intent-filter>

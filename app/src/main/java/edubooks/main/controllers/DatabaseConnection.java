@@ -109,7 +109,54 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getListingPageDetails(){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price,id FROM ListedBook",null);
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price,id FROM ListedBook WHERE isAvailible <> 0",null);
+    }
+
+    public Cursor getUserSpecificListings(int UserIdInt) {
+        SQLiteDatabase DB = this.getReadableDatabase();
+        return DB.rawQuery(
+            "SELECT LB.Title, LB.Author, LB.IsbnNumber, LB.Price, LB.id FROM Account\n" +
+            "INNER JOIN ListedBook LB on Account.Id = LB.AccountId\n" +
+            "WHERE AccountId = ? AND LB.isAvailible <> 0",new String[]{String.valueOf(UserIdInt)}
+        );
+    }
+
+    public JSONObject getSpecificBook(String BookIdInt) {
+        JSONObject JsonObj = new JSONObject();
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT Title, Author, IsbnNumber, Category, Faculty, Price, Quality  from ListedBook where id = ?", new String[]{String.valueOf(BookIdInt)});
+        if (cursor.moveToFirst()) {
+            try {
+                JsonObj.put("BookTitle",cursor.getString(0));
+                JsonObj.put("Author",cursor.getString(1));
+                JsonObj.put("IsbnNumber",cursor.getString(2));
+                JsonObj.put("Category",cursor.getString(3));
+                JsonObj.put("Faculty",cursor.getString(4));
+                JsonObj.put("Price",cursor.getString(5));
+                JsonObj.put("Quality",cursor.getString(6));
+                return JsonObj;
+            } catch (JSONException e) {
+                Log.d("Error in loading Book", String.valueOf(e));
+            }
+
+        }
+        return null;
+    }
+
+    public Boolean updateBookDetails(ContentValues BookDetailsContentValues, String BookIdInt) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        int result = DB.update("ListedBook", BookDetailsContentValues, "Id=?", new String[]{String.valueOf(BookIdInt)});
+//      THIS CHECKS IF ANY RECORDS WERE CHANGED RETURN TRUE IF IT DID FALSE IF NOT
+        return result != -1;
+    }
+
+    public Boolean removeBook(String BookIdInt) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("isAvailible", 0);
+        int result = DB.update("ListedBook", contentValues, "Id=?",new String[]{String.valueOf(BookIdInt)});
+//      THIS CHECKS IF ANY RECORDS WERE CHANGED RETURN TRUE IF IT DID FALSE IF NOT
+        return result != -1;
     }
 
     public Cursor getListofBooksViaIsbN(String isbnNumber){
