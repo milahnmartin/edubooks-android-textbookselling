@@ -24,7 +24,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table Account(Id INTEGER PRIMARY KEY AUTOINCREMENT,FirstName TEXT,LastName TEXT,EmailAddress TEXT,Password TEXT,PhoneNumber TEXT)");
-        db.execSQL("create table ListedBook(id INTEGER PRIMARY KEY AUTOINCREMENT,Title TEXT,Author TEXT,Category TEXT,Faculty TEXT,Quality TEXT,IsbnNumber INTEGER,isAvailible INTEGER,AccountId INTEGER,Price REAL,FOREIGN KEY(AccountId) REFERENCES Account (Id))");
+        db.execSQL("create table ListedBook(id INTEGER PRIMARY KEY AUTOINCREMENT,Title TEXT,Author TEXT,Category TEXT,Faculty TEXT,Quality TEXT,IsbnNumber TEXT,isAvailible INTEGER,AccountId INTEGER,Price REAL,FOREIGN KEY(AccountId) REFERENCES Account (Id))");
     }
 
     @Override
@@ -133,7 +133,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return -1;
     }
 
-    public JSONObject insertNewBook(String Title, String Author, String Category, String faculty, String Quality ,int IsbnNumber, boolean isAvailible,float bookPrice,int accountId) throws JSONException {
+    public JSONObject insertNewBook(String Title, String Author, String Category, String faculty, String Quality ,String IsbnNumber, boolean isAvailible,float bookPrice,int accountId) throws JSONException {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         // Going to user the JSONObject to provide a result and feedback

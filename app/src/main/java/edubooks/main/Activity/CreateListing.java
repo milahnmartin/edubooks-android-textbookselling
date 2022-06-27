@@ -81,7 +81,7 @@ public class CreateListing extends AppCompatActivity {
                                     BookCategory.getText().toString(),
                                     BookFaculty.getText().toString(),
                                     BookConditionTextView.getText().toString(),
-                                    Integer.parseInt(ISBNTextView.getText().toString()),
+                                    ISBNTextView.getText().toString(),
                                     true,
                                     Float.parseFloat(SellingPriceTextView.getText().toString()),
                                     userId
