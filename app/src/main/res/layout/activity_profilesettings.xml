@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/SignIn"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/ic_profile_box"
             android:drawablePadding="20dp"
@@ -149,7 +149,6 @@
             android:id="@+id/MyListing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_below="@id/EditInformation"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="100dp"
