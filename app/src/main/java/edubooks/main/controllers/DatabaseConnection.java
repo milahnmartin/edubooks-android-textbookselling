@@ -109,12 +109,12 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getListingPageDetails(){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook",null);
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price,id FROM ListedBook",null);
     }
 
     public Cursor getListofBooksViaIsbN(String isbnNumber){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price, AccountId FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price, AccountId FROM ListedBook WHERE id = ?",new String[]{String.valueOf(isbnNumber)});
     }
 
     public Cursor getOwnerId(int id){
@@ -160,6 +160,6 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor listingBookSearchQuery(String sQuery){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price FROM ListedBook WHERE Title LIKE '%' || ? || '%'",new String[]{sQuery});
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price,id FROM ListedBook WHERE Title LIKE '%' || ? || '%'",new String[]{sQuery});
     }
 }

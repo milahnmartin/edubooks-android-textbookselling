@@ -25,9 +25,9 @@ public class BookSpecificActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_specific);
         Intent LoginIntent = getIntent();
         //-1 shows user_id couldnt be retrieved or error occured
-        String getvariable = LoginIntent.getStringExtra("isbn");
+        String getvariable = LoginIntent.getStringExtra("bookid");
         String[] new_arr = getvariable.split(",");
-        String isbnget = new_arr[0];
+        String bookid = new_arr[0];
         int userId = Integer.parseInt(new_arr[1]);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
@@ -43,7 +43,7 @@ public class BookSpecificActivity extends AppCompatActivity {
         final ListView list = findViewById(R.id.list);
         ArrayList<String> arrayList = new ArrayList<>();
         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(BookSpecificActivity.this);
-        Cursor isbn = DatabaseConnectionObj.getListofBooksViaIsbN(isbnget);
+        Cursor isbn = DatabaseConnectionObj.getListofBooksViaIsbN(bookid);
         arrayList.add("Book information:");
         String[] bookinfo = new String[] { "Book owner information:", ""};
         while(isbn.moveToNext()){

@@ -80,7 +80,8 @@ public class ListingActivity extends AppCompatActivity {
                         String Author = cursor.getString(1);
                         String ISBN = cursor.getString(2);
                         String Price = cursor.getString(3);
-                        String listitem = "Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
+                        String id = cursor.getString(4);
+                        String listitem = id + ", Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
                         arrayList.add(listitem);
                     }
                 }
@@ -100,15 +101,15 @@ public class ListingActivity extends AppCompatActivity {
                             String New_list = clickedItem.replaceAll(":", ",");
                             String Spaceless = New_list.replaceAll("\\n+", ",");
                             String[] new_arr = Spaceless.split(",");
-                            Toast.makeText(ListingActivity.this, new_arr[5], Toast.LENGTH_LONG).show();
+                           // Toast.makeText(ListingActivity.this, new_arr[5], Toast.LENGTH_LONG).show();
                             //check to ensure that the listing is in the database
                             validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
                             //if success then grab isbn and take over to the next page.
                             if (validateAndRetrieveId != -1) {
+                                int bookid = Integer.parseInt(new_arr[0]);
                                 Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
-                                String ISBNnum = (new_arr[5]);
                                 Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
-                                goBookpage.putExtra("isbn", ISBNnum + "," + userId);
+                                goBookpage.putExtra("bookid", bookid + "," + userId);
                                 startActivity(goBookpage);
                             } else {
                                 Snackbar.make(view, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
@@ -138,7 +139,8 @@ public class ListingActivity extends AppCompatActivity {
                 String Author = cursor.getString(1);
                 String ISBN = cursor.getString(2);
                 String Price = cursor.getString(3);
-                String listitem = "Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
+                String id = cursor.getString(4);
+                String listitem = id + ", Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
                 arrayList.add(listitem);
             }
         }
@@ -158,15 +160,16 @@ public class ListingActivity extends AppCompatActivity {
                     String New_list = clickedItem.toString().replaceAll(":", ",");
                     String Spaceless = New_list.toString().replaceAll("\\n+", ",");
                     String[] new_arr = Spaceless.split(",");
-                    Toast.makeText(ListingActivity.this, new_arr[5].toString(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(ListingActivity.this, new_arr[0].toString(), Toast.LENGTH_LONG).show();
                     //check to ensure that the listing is in the database
-                    validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
+                    validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[2]);
                     //if success then grab isbn and take over to the next page.
                     if (validateAndRetrieveId != -1) {
+                        int bookid = Integer.parseInt(new_arr[0]);
                         Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
-                        int ISBNnum = Integer.parseInt(new_arr[5]);
+
                         Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
-                        goBookpage.putExtra("isbn", ISBNnum + "," + userId);
+                        goBookpage.putExtra("bookid", bookid + "," + userId);
                         startActivity(goBookpage);
                     } else {
                         Snackbar.make(view, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
