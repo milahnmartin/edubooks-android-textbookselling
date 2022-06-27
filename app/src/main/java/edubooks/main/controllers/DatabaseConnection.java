@@ -114,7 +114,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
 
     public Cursor getListofBooksViaIsbN(String isbnNumber){
         SQLiteDatabase DB = this.getReadableDatabase();
-        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price, AccountId FROM ListedBook WHERE IsbnNumber = ?",new String[]{String.valueOf(isbnNumber)});
+        return DB.rawQuery("SELECT Title,Author,IsbnNumber,Price, AccountId FROM ListedBook WHERE IsbnNumber = ?",new String[]{isbnNumber});
     }
 
     public Cursor getOwnerId(int id){
