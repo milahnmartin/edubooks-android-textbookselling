@@ -65,28 +65,26 @@
             android:padding="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <LinearLayout
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="220dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFE4D6"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/list"
                 android:layout_width="wrap_content"
-                android:layout_height="400dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="220dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="#FFE4D6"
-                android:orientation="vertical">
-
-                    <ListView
-                        android:id="@+id/list"
-                        android:layout_width="wrap_content"
-                        android:layout_height="300dp"
-                        android:divider="@color/orange"
-                        android:dividerHeight="3dp" />
-            </LinearLayout>
-    </ScrollView>
-
+                android:layout_height="wrap_content"
+                android:divider="@color/orange"
+                android:dividerHeight="3dp" />
+        </LinearLayout>
     </RelativeLayout>
 
 </ScrollView>
