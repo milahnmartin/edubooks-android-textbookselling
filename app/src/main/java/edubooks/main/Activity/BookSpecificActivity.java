@@ -27,11 +27,11 @@ public class BookSpecificActivity extends AppCompatActivity {
         //-1 shows user_id couldnt be retrieved or error occured
         String getvariable = LoginIntent.getStringExtra("isbn");
         String[] new_arr = getvariable.split(",");
-        int isbnget = Integer.parseInt(new_arr[0]);
+        String isbnget = new_arr[0];
         int userId = Integer.parseInt(new_arr[1]);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
-        ImageView BackHome = (ImageView) findViewById(R.id.BackButton);
+        ImageView BackHome = findViewById(R.id.BackButton);
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
@@ -50,7 +50,7 @@ public class BookSpecificActivity extends AppCompatActivity {
             String BookN = isbn.getString(0);
             String Author = isbn.getString(1);
             String ISBN = isbn.getString(2);
-            String Price = isbn.getString(3);
+            String Price =  isbn.getString(3);
             String id_dat = isbn.getString(4);
             bookinfo[1] = id_dat;
             String listitem = "Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;

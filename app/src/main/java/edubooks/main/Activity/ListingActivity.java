@@ -106,7 +106,7 @@ public class ListingActivity extends AppCompatActivity {
                             //if success then grab isbn and take over to the next page.
                             if (validateAndRetrieveId != -1) {
                                 Snackbar.make(view, "Success", Snackbar.LENGTH_SHORT).show();
-                                int ISBNnum = Integer.parseInt(new_arr[5]);
+                                String ISBNnum = (new_arr[5]);
                                 Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
                                 goBookpage.putExtra("isbn", ISBNnum + "," + userId);
                                 startActivity(goBookpage);
