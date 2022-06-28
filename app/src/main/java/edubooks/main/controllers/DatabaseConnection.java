@@ -121,24 +121,19 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         );
     }
 
-    public JSONObject getSpecificBook(String BookIdInt) {
-        JSONObject JsonObj = new JSONObject();
+    public JSONObject getSpecificBook(String BookIdInt) throws JSONException {
         SQLiteDatabase DB = this.getReadableDatabase();
-        Cursor cursor = DB.rawQuery("SELECT Title, Author, IsbnNumber, Category, Faculty, Price, Quality  from ListedBook where id = ?", new String[]{String.valueOf(BookIdInt)});
-        if (cursor.moveToFirst()) {
-            try {
-                JsonObj.put("BookTitle",cursor.getString(0));
-                JsonObj.put("Author",cursor.getString(1));
-                JsonObj.put("IsbnNumber",cursor.getString(2));
-                JsonObj.put("Category",cursor.getString(3));
-                JsonObj.put("Faculty",cursor.getString(4));
-                JsonObj.put("Price",cursor.getString(5));
-                JsonObj.put("Quality",cursor.getString(6));
-                return JsonObj;
-            } catch (JSONException e) {
-                Log.d("Error in loading Book", String.valueOf(e));
-            }
-
+        JSONObject JsonObj = new JSONObject();
+        Cursor SpecificBookCursor = DB.rawQuery("SELECT Title, Author, Category, Faculty, Quality, IsbnNumber, Price FROM ListedBook WHERE id = ?",new String[]{String.valueOf(BookIdInt)});
+        if(SpecificBookCursor.getCount() > 0){
+            JsonObj.put("BookTitle",SpecificBookCursor.getString(0));
+            JsonObj.put("Author",SpecificBookCursor.getString(1));
+            JsonObj.put("Category",SpecificBookCursor.getString(2));
+            JsonObj.put("Faculty",SpecificBookCursor.getString(3));
+            JsonObj.put("Quality",SpecificBookCursor.getString(4));
+            JsonObj.put("IsbnNumber",SpecificBookCursor.getString(5));
+            JsonObj.put("Price",SpecificBookCursor.getString(6));
+            return JsonObj;
         }
         return null;
     }
@@ -178,6 +173,12 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
             return cursor.getInt(0);
         }
         return -1;
+    }
+
+    public boolean doesBookExist(String bookId){
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("SELECT * FROM ListedBook WHERE id = ?",new String[]{String.valueOf(bookId)});
+        return cursor.getCount() > 0;
     }
 
     public JSONObject insertNewBook(String Title, String Author, String Category, String faculty, String Quality ,String IsbnNumber, boolean isAvailible,float bookPrice,int accountId) throws JSONException {

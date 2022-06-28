@@ -3,6 +3,7 @@ package edubooks.main.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import edubooks.main.R;
@@ -61,26 +63,25 @@ public class UserListings extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String clickedItem = (String) list.getItemAtPosition(position);
-                int validateAndRetrieveId = -1;
-                if (!Objects.equals(clickedItem, "Database has no records.")) {
-                    String New_list = clickedItem.toString().replaceAll(":", ",");
-                    String Spaceless = New_list.toString().replaceAll("\\n+", ",");
+                boolean validateAndRetrieveId = false;
+                if (!Objects.equals(clickedItem, "You do not have any books listed.")) {
+                    String New_list = clickedItem.replaceAll(":", ",");
+                    String Spaceless = New_list.replaceAll("\\n+", ",");
                     String[] new_arr = Spaceless.split(",");
 
                     //check to ensure that the listing is in the database
-                    validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
+                    validateAndRetrieveId = DatabaseConnectionObj.doesBookExist(new_arr[new_arr.length - 1]);
                     //if success then grab isbn and take over to the next page.
-                    if (validateAndRetrieveId != -1) {
-                        int bookid = position + 1;
-                        // TODO possible better way of doing this but better than doing select on
-                        // all the details because there could be details with the exact same details
+                    Log.d("CLICKED_ITEM", String.valueOf(Boolean.valueOf(validateAndRetrieveId)));
+                    Log.d("CLICKED_ITEM", Arrays.toString(new_arr));
 
-                        Intent goBookpage = new Intent(UserListings.this, UserBookSpecificActivity.class);
-                        goBookpage.putExtra("bookid", new_arr[9] + "," + userId);
-                        startActivity(goBookpage);
-                    } else {
-                        Snackbar.make(view, "The information provided is incorrect.", Snackbar.LENGTH_SHORT).show();
-                    }
+                    Intent goBookpage = new Intent(UserListings.this, UserBookSpecificActivity.class);
+                    Bundle clickedArgs = new Bundle();
+                    clickedArgs.putString("bookid",new_arr[new_arr.length - 1]);
+                    clickedArgs.putInt("userid",userId);
+                    goBookpage.putExtras(clickedArgs);
+                    startActivity(goBookpage);
+
                 } else {
                     Snackbar.make(view, "No Records to display.", Snackbar.LENGTH_SHORT).show();
                 }

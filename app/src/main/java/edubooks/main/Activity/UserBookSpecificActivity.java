@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,19 +28,17 @@ public class UserBookSpecificActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userspecificlisting);
-
         //Hides the action bar
         Objects.requireNonNull(getSupportActionBar()).hide();
-
         //Class Objects
         DatabaseConnection DatabaseConnectionObj = new DatabaseConnection(UserBookSpecificActivity.this);
-        CreateListing CreateListingObj = new CreateListing();
 
         Intent Intent = getIntent();
-        String getvariable = Intent.getStringExtra("bookid");
-        String[] new_arr = getvariable.split(",");
-        String BookIdInt = new_arr[0];
-        int userId = Integer.parseInt(new_arr[1]);
+        Bundle profileListingArgs = Intent.getExtras();
+        String clickedBookId = profileListingArgs.getString("bookid");
+        int sessionUserId = profileListingArgs.getInt("userid");
+        Log.d("BOOK_SPECIFIC",clickedBookId);
+        Log.d("BOOK_SPECIFIC",String.valueOf(sessionUserId));
 
         TextView BookTitleTextView = findViewById(R.id.BookTitle);
         TextView AuthorNameTextView = findViewById(R.id.AuthorName);
@@ -58,7 +57,7 @@ public class UserBookSpecificActivity extends AppCompatActivity {
         String BookConditionStr = null;
 
         try {
-            JSONObject UserCurrentDataJsonObj = DatabaseConnectionObj.getSpecificBook(BookIdInt);
+            JSONObject UserCurrentDataJsonObj = DatabaseConnectionObj.getSpecificBook(clickedBookId);
             BookTitleStr = (String) UserCurrentDataJsonObj.get("BookTitle");
             AuthorNameStr = (String) UserCurrentDataJsonObj.get("Author");
             ISBNStr = (String) UserCurrentDataJsonObj.get("IsbnNumber");
@@ -78,7 +77,7 @@ public class UserBookSpecificActivity extends AppCompatActivity {
         SellingPriceTextView.setText(SellingPriceStr);
         BookConditionTextView.setText(BookConditionStr);
 
-        Button AddList = (Button) findViewById(R.id.SubmitBook);
+        Button AddList = findViewById(R.id.SubmitBook);
         String FinalBookTitleStr = BookTitleStr;
         String FinalAuthorNameStr = AuthorNameStr;
         String FinalISBNStr = ISBNStr;
@@ -108,6 +107,7 @@ public class UserBookSpecificActivity extends AppCompatActivity {
                 ) {
                     Snackbar.make(view, "No Details Have Been Changed", Snackbar.LENGTH_SHORT).show();
                 } else {
+                    CreateListing CreateListingObj = new CreateListing();
                     JSONObject JsonObj = new JSONObject();
                     boolean IsEmailValidBool = true;
                     String MessageStr = null;
@@ -145,10 +145,10 @@ public class UserBookSpecificActivity extends AppCompatActivity {
                             if (!BookConditionTextView.getText().toString().equals(FinalBookConditionStr) && !BookConditionTextView.getText().toString().equals("")) {
                                 contentValues.put("Quality", BookConditionTextView.getText().toString());
                             }
-                            if (DatabaseConnectionObj.updateBookDetails(contentValues, BookIdInt)) {
+                            if (DatabaseConnectionObj.updateBookDetails(contentValues,clickedBookId)) {
                                 Intent RedirectLogin = new Intent(UserBookSpecificActivity.this, UserListings.class);
                                 Bundle extras = new Bundle();
-                                extras.putInt("user_id",userId);
+                                extras.putInt("user_id",sessionUserId);
                                 RedirectLogin.putExtras(extras);
                                 startActivity(RedirectLogin);
                             } else {
@@ -164,15 +164,15 @@ public class UserBookSpecificActivity extends AppCompatActivity {
                 }
             }
         });
-        Button DeleteBookBtn = (Button) findViewById(R.id.DeleteBook);
+        Button DeleteBookBtn = findViewById(R.id.DeleteBook);
         DeleteBookBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                if (DatabaseConnectionObj.removeBook(BookIdInt)) {
+                if (DatabaseConnectionObj.removeBook(clickedBookId)) {
                     Intent RedirectLogin = new Intent(UserBookSpecificActivity.this, UserListings.class);
                     Bundle extras = new Bundle();
-                    extras.putInt("user_id",userId);
+                    extras.putInt("user_id",sessionUserId);
                     RedirectLogin.putExtras(extras);
                     startActivity(RedirectLogin);
                 } else {
@@ -186,7 +186,7 @@ public class UserBookSpecificActivity extends AppCompatActivity {
             public void onClick(View v1) {
                 Intent RedirectLogin = new Intent(UserBookSpecificActivity.this, MenuActivity.class);
                 Bundle extras = new Bundle();
-                extras.putInt("user_id",userId);
+                extras.putInt("user_id",sessionUserId);
                 extras.putString("activity_initiate","edubooks.main.Activity.UserBookSpecificActivity");
                 RedirectLogin.putExtras(extras);
                 startActivity(RedirectLogin);
