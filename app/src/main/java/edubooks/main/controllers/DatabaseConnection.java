@@ -129,11 +129,11 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
             SpecificBookCursor.moveToFirst();
             JsonObj.put("BookTitle",SpecificBookCursor.getString(0));
             JsonObj.put("Author",SpecificBookCursor.getString(1));
-            JsonObj.put("Category",SpecificBookCursor.getString(2));
-            JsonObj.put("Faculty",SpecificBookCursor.getString(3));
-            JsonObj.put("Quality",SpecificBookCursor.getString(4));
-            JsonObj.put("IsbnNumber",SpecificBookCursor.getString(5));
-            JsonObj.put("Price",SpecificBookCursor.getString(6));
+            JsonObj.put("Category",SpecificBookCursor.getString(3));
+            JsonObj.put("Faculty",SpecificBookCursor.getString(4));
+            JsonObj.put("Quality",SpecificBookCursor.getString(6));
+            JsonObj.put("IsbnNumber",SpecificBookCursor.getString(2));
+            JsonObj.put("Price",SpecificBookCursor.getString(5));
             return JsonObj;
         }
         return null;
