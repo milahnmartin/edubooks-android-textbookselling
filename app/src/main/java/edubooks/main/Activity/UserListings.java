@@ -63,7 +63,7 @@ public class UserListings extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String clickedItem = (String) list.getItemAtPosition(position);
-                boolean validateAndRetrieveId = false;
+                boolean validateAndRetrieveId;
                 if (!Objects.equals(clickedItem, "You do not have any books listed.")) {
                     String New_list = clickedItem.replaceAll(":", ",");
                     String Spaceless = New_list.replaceAll("\\n+", ",");
@@ -75,13 +75,15 @@ public class UserListings extends AppCompatActivity {
                     Log.d("CLICKED_ITEM", String.valueOf(Boolean.valueOf(validateAndRetrieveId)));
                     Log.d("CLICKED_ITEM", Arrays.toString(new_arr));
 
-                    Intent goBookpage = new Intent(UserListings.this, UserBookSpecificActivity.class);
-                    Bundle clickedArgs = new Bundle();
-                    clickedArgs.putString("bookid",new_arr[new_arr.length - 1]);
-                    clickedArgs.putInt("userid",userId);
-                    goBookpage.putExtras(clickedArgs);
-                    startActivity(goBookpage);
-
+                    if(validateAndRetrieveId){
+                        Intent goBookpage = new Intent(UserListings.this, UserBookSpecificActivity.class);
+                        Bundle clickedArgs = new Bundle();
+                        clickedArgs.putString("bookid",new_arr[new_arr.length - 1]);
+                        clickedArgs.putInt("userid",userId);
+                        goBookpage.putExtras(clickedArgs);
+                        startActivity(goBookpage);
+                    }
+                    Snackbar.make(view, "Error Occured When Trying to Get Book Details", Snackbar.LENGTH_SHORT).show();
                 } else {
                     Snackbar.make(view, "No Records to display.", Snackbar.LENGTH_SHORT).show();
                 }
