@@ -16,10 +16,10 @@
 
         <ImageView
             android:id="@+id/BackButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_baseline_arrow_back_24" />
 
@@ -29,23 +29,23 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
-            android:text="DETAILED INFO"
-            android:textColor="@color/white"
-            android:textSize="30dp"
+            android:text="EDUBOOKS"
+            android:textColor="#FFFFFF"
+            android:textSize="35dp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/Logo"
-            android:layout_width="57dp"
-            android:layout_height="57dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/logo" />
 
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="120dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="#FFE4D6"

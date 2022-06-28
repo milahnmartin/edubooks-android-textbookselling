@@ -12,30 +12,46 @@
         android:background="@drawable/background1"
         tools:context=".Activity.UserBookSpecificActivity">
 
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:text="EDIT BOOK"
+            android:textColor="#FFFFFF"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/Logo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/logo" />
+
         <ImageView
             android:id="@+id/BackButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/menuwhite" />
-
-
-        <ImageView
-            android:id="@+id/Logo"
-            android:layout_width="57dp"
-            android:layout_height="57dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/logo" />
 
         <ImageButton
             android:id="@+id/AddBook"
             android:layout_width="100dp"
             android:layout_height="150dp"
-            android:layout_below="@+id/BackButton"
+            android:layout_below="@+id/Title"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="130dp"
             android:layout_marginTop="10dp"

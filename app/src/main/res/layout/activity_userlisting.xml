@@ -19,35 +19,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
-            android:text="My Listings"
+            android:text="MY LISTINGS"
             android:textColor="#FFFFFF"
             android:textSize="35dp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/BackButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/menuwhite" />
 
         <ImageView
             android:id="@+id/Logo"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/BackButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/menuwhite" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
             android:layout_below="@+id/Title"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"

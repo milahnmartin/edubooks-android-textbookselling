@@ -12,41 +12,40 @@
         android:background="@drawable/background1"
         tools:context=".Activity.RegisterActivity">
 
-        <ImageView
-            android:id="@+id/BackButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/menuwhite" />
-
         <TextView
             android:id="@+id/Title"
-            android:layout_width="200dp"
-            android:layout_height="57dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
             android:text="EDUBOOKS"
-            android:textColor="@color/Off_white"
+            android:textColor="#FFFFFF"
             android:textSize="35dp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/Logo"
-            android:layout_width="57dp"
-            android:layout_height="57dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_toRightOf="@id/Title"
+            android:layout_marginBottom="10dp"
             android:src="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/BackButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/menuwhite" />
 
         <ImageButton
             android:id="@+id/AddBook"
@@ -83,7 +82,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
-            android:height="30dp"
+            android:height="50dp"
             android:background="@drawable/ic_profile_box"
             android:ems="10"
             android:hint="Enter a book title"
@@ -108,10 +107,10 @@
             android:hint="Enter author name"
             android:inputType="textPersonName"
             android:padding="15dp"
-            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
+            android:textColorHint="#a2a2a2"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/ISBNnr"
@@ -127,10 +126,10 @@
             android:hint="Enter ISBN code"
             android:inputType="number"
             android:padding="15dp"
-            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
+            android:textColorHint="#a2a2a2"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/Category"
@@ -146,10 +145,10 @@
             android:hint="Enter book category"
             android:inputType="text"
             android:padding="15dp"
-            android:textColorHint="#a2a2a2"
             android:textColor="@color/Brown"
+            android:textColorHint="#a2a2a2"
             android:textSize="14dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/Faculty"
