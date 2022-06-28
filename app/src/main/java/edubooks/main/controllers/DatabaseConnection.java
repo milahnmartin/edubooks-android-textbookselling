@@ -124,8 +124,9 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
     public JSONObject getSpecificBook(String BookIdInt) throws JSONException {
         SQLiteDatabase DB = this.getReadableDatabase();
         JSONObject JsonObj = new JSONObject();
-        Cursor SpecificBookCursor = DB.rawQuery("SELECT Title, Author, Category, Faculty, Quality, IsbnNumber, Price FROM ListedBook WHERE id = ?",new String[]{String.valueOf(BookIdInt)});
+        Cursor SpecificBookCursor = DB.rawQuery("SELECT Title, Author, IsbnNumber, Category, Faculty, Price, Quality  from ListedBook where id = ?", new String[]{String.valueOf(BookIdInt)});
         if(SpecificBookCursor.getCount() > 0){
+            SpecificBookCursor.moveToFirst();
             JsonObj.put("BookTitle",SpecificBookCursor.getString(0));
             JsonObj.put("Author",SpecificBookCursor.getString(1));
             JsonObj.put("Category",SpecificBookCursor.getString(2));
