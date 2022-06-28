@@ -164,22 +164,22 @@ public class UserBookSpecificActivity extends AppCompatActivity {
                 }
             }
         });
-        Button DeleteBookBtn = findViewById(R.id.DeleteBook);
-        DeleteBookBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View view) {
-                if (DatabaseConnectionObj.removeBook(clickedBookId)) {
-                    Intent RedirectLogin = new Intent(UserBookSpecificActivity.this, UserListings.class);
-                    Bundle extras = new Bundle();
-                    extras.putInt("user_id",sessionUserId);
-                    RedirectLogin.putExtras(extras);
-                    startActivity(RedirectLogin);
-                } else {
-                    Snackbar.make(view, "Something Went Deleting The Book", Snackbar.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        Button DeleteBookBtn = findViewById(R.id.DeleteBook);
+//        DeleteBookBtn.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.O)
+//            @Override
+//            public void onClick(View view) {
+//                if (DatabaseConnectionObj.removeBook(clickedBookId)) {
+//                    Intent RedirectLogin = new Intent(UserBookSpecificActivity.this, UserListings.class);
+//                    Bundle extras = new Bundle();
+//                    extras.putInt("user_id",sessionUserId);
+//                    RedirectLogin.putExtras(extras);
+//                    startActivity(RedirectLogin);
+//                } else {
+//                    Snackbar.make(view, "Something Went Deleting The Book", Snackbar.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     ImageView BackHome = findViewById(R.id.BackButton);
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
