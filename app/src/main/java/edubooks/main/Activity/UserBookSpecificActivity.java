@@ -187,7 +187,7 @@ public class UserBookSpecificActivity extends AppCompatActivity {
                 Intent RedirectLogin = new Intent(UserBookSpecificActivity.this, MenuActivity.class);
                 Bundle extras = new Bundle();
                 extras.putInt("user_id",userId);
-                extras.putString("activity_initiate","edubooks.main.Activity.AccountActivity");
+                extras.putString("activity_initiate","edubooks.main.Activity.UserBookSpecificActivity");
                 RedirectLogin.putExtras(extras);
                 startActivity(RedirectLogin);
             }
