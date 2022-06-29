@@ -140,7 +140,7 @@ public class ListingActivity extends AppCompatActivity {
                 String ISBN = cursor.getString(2);
                 String Price = cursor.getString(3);
                 String id = cursor.getString(4);
-                String listitem ="Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
+                String listitem = id + ", Book Name:" + BookN + "\nAuthor:" +  Author + "\nISBN:" + ISBN + "\nPrice: R" +Price;
                 arrayList.add(listitem);
             }
         }
@@ -162,11 +162,11 @@ public class ListingActivity extends AppCompatActivity {
                     String[] new_arr = Spaceless.split(",");
                    // Toast.makeText(ListingActivity.this, new_arr[0].toString(), Toast.LENGTH_LONG).show();
                     //check to ensure that the listing is in the database
-                    validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[1]);
+                    validateAndRetrieveId = DatabaseConnectionObj.getBookName(new_arr[2]);
                     //if success then grab isbn and take over to the next page.
                     if (validateAndRetrieveId != -1) {
-                        int bookid = position + 1;
-                        Snackbar.make(view, "Success." + position, Snackbar.LENGTH_SHORT).show();
+                        int bookid = Integer.parseInt(new_arr[0]);
+                        Snackbar.make(view, "Success.", Snackbar.LENGTH_SHORT).show();
 
                         Intent goBookpage = new Intent(ListingActivity.this, BookSpecificActivity.class);
                         goBookpage.putExtra("bookid", bookid + "," + userId);
