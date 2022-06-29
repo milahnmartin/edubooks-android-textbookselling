@@ -146,11 +146,11 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return result != -1;
     }
 
-    public Boolean removeBook(String BookIdInt) {
+    public Boolean removeBook(int BookIdInt) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("isAvailible", 0);
-        int result = DB.update("ListedBook", contentValues, "Id=?",new String[]{String.valueOf(BookIdInt)});
+        int result = DB.update("ListedBook", contentValues, "id=?",new String[]{String.valueOf(BookIdInt)});
 //      THIS CHECKS IF ANY RECORDS WERE CHANGED RETURN TRUE IF IT DID FALSE IF NOT
         return result != -1;
     }
