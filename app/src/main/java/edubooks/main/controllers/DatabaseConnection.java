@@ -146,7 +146,7 @@ public class DatabaseConnection extends SQLiteOpenHelper  {
         return result != -1;
     }
 
-    public Boolean removeBook(int BookIdInt) {
+    public Boolean removeBook(String BookIdInt) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("isAvailible", 0);
