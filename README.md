@@ -15,8 +15,3 @@ The Second Hand Textbooks for University Students application provides a platfor
 - Android Studio: The application is developed using Android Studio, the official Integrated Development Environment (IDE) for Android app development.
 - SQLite: The application uses SQLite, a relational database management system, to store and manage user and textbook data.
 
-## Installation
-The Second Hand Textbooks for University Students app can be downloaded from the Google Play Store. The app requires Android 5.0 or higher and a device with at least 1GB of RAM.
-
-## Conclusion
-The Second Hand Textbooks for University Students app provides a convenient and cost-effective solution for university students to buy and sell their used textbooks. With its user-friendly interface and secure online payment system, students can buy and sell textbooks with ease and peace of mind.
